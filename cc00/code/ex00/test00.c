@@ -14,5 +14,5 @@ int main(void)
 
 void ft_putchar(const char in_char)
 {
-	write(1, &c, 1);
+	write(1, &in_char, 1);
 }
