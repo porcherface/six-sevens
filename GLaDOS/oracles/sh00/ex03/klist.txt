@@ -1,0 +1,5 @@
+Credentials cache: API:158EE471-2E05-437B-B7E1-9A6F23E9EA6C
+        Principal: amazzei@42ROMA.IT
+
+  Issued                Expires               Principal
+Nov 24 15:19:19 2020  Nov 25 01:19:13 2020  krbtgt/42ROMA.IT@42ROMA.IT
