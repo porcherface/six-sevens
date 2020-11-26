@@ -9,9 +9,10 @@
 /*   Updated: 2020/11/26 15:58:16 by amazzei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include <unistd.h>
 
-void ft_putnbr(int nb)
+void	ft_putnbr(int nb)
 {
 	char digits[5];
 	int iterator;
@@ -36,5 +37,5 @@ void ft_putnbr(int nb)
 		}
 		iterator--;
 	}
-	return;
+	return ;
 }

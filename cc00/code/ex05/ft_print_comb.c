@@ -9,9 +9,10 @@
 /*   Updated: 2020/11/26 15:58:16 by amazzei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include <unistd.h>
 
-void ft_print_comb(void)
+void	ft_print_comb(void)
 {
 	char first;
 	char second;
@@ -39,5 +40,5 @@ void ft_print_comb(void)
 		first++;
 	}
 	write(1, ", 789", 5);
-	return;
+	return ;
 }

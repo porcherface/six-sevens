@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 #include <unistd.h>
 
-void ft_print_comb2(void)
+void	ft_print_comb2(void)
 {
 	int cnt;
 	int cnt2;
@@ -37,5 +37,5 @@ void ft_print_comb2(void)
 		}
 	}
 	write(1, "98 99", 5);
-	return;
-} 
+	return ;
+}

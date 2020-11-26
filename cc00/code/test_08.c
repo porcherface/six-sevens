@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 #include <unistd.h>
 
-void ft_number_to_digits(long n, int digits[])
+void ft_number_to_digits(long n, int *digits)
 {
 	digits[0] = (n / 1) % 10;
 	digits[1] = (n / 10) % 10;
@@ -69,6 +69,8 @@ void ft_print_combn(int n)
 	while (number < max )
 	{	
 		ft_number_to_digits(number, digits);
+		write(1, digits, n);
+
 		token = ft_go_next(digits, n);
 		if (token)
 		{

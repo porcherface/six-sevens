@@ -9,19 +9,20 @@
 /*   Updated: 2020/11/26 15:58:16 by amazzei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include <unistd.h>
 
-void ft_print_alphabet(void)
+void	ft_print_alphabet(void)
 {
-	int counter;
 	char c;
+	int counter;
 
 	counter = 26;
-	while ( counter )
+	while (counter)
 	{
 		c = 'z' - counter + 1;
-		write(1, &c, 1);	
+		write(1, &c, 1);
 		counter--;
 	}
-	return;	
+	return ;
 }

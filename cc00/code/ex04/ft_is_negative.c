@@ -9,9 +9,10 @@
 /*   Updated: 2020/11/26 15:58:16 by amazzei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include <unistd.h>
 
-void ft_is_negative(int n)
+void	ft_is_negative(int n)
 {
 	char c;
 
@@ -24,5 +25,5 @@ void ft_is_negative(int n)
 		c = 'P';		
 	}
 	write(1, &c, 1);
-	return;
+	return ;
 }
