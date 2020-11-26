@@ -15,6 +15,14 @@ int main(void)
 	ft_putchar('c');
 	ft_print_alphabet( );
 	t_print_reverse_alphabet( );
+	void ft_print_numbers( );
+	ft_is_negative(int n);
+	ft_print_comb(void);
+	ft_print_comb2();
+    ft_putnbr( 65535);
+	ft_putnbr( 65535);
+	ft_print_combn(int nb);
+
 	return;
 }
 
@@ -28,12 +36,6 @@ void ft_print_alphabet(void)
 {
 	write(1, "abcdefghijklmnopqrstuvwxyz", 26);
 	return;	
-}
-
-void ft_print_reverse_alphabet(void)
-{
-	write(1, "zyxwvutsrqponmlkjihgfedcba", 26);
-	return;
 }
 
 void ft_print_reverse_alphabet(void)
@@ -120,21 +122,30 @@ void ft_print_comb2(void)
 	}
 	return;
 }
-/* array is 5 long cus we have 5 digits in 2^16*/
+
+/* array is 5 long cus we have 5 digits in 2^16 */
 void ft_putnbr(int nb)
 {
 	int digits[5];
+	bool sign;
 
+	sign = ( nb < 0 );
 	digit[4] = nb % 10 + '0';
 	digit[3] = ( nb - digit[4] ) / 10 % 10  + '0';
 	digit[2] = ( nb - digit[4] - 10 * digit[3] ) / 100 % 10  + '0';
 	digit[1] = ( nb - digit[4] - 10 * digit[3] - 100 * digit[2] ) / 1000 % 10  + '0';
 	digit[0] = ( nb - digit[4] - 10 * digit[3] - 100 * digit[2] - 1000 * digit[3] );
 	digit[0] = digit[0] / 10000 % 10 + '0';
+	if ( sign )
+	{
+		write(1, '-', 1);
+	}
 	write(1, digit, 5);
+
 }
 
+/* here i guess i have to find something smart to succeed */
 void ft_print_combn(int nb);
 {
-	
+	return;
 }
