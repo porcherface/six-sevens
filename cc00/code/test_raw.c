@@ -128,7 +128,9 @@ void ft_putnbr(int nb)
 {
 	int digits[5];
 	bool sign;
+	int it;
 
+	it = 5;
 	sign = ( nb < 0 );
 	digit[4] = nb % 10 + '0';
 	digit[3] = ( nb - digit[4] ) / 10 % 10  + '0';
@@ -140,8 +142,11 @@ void ft_putnbr(int nb)
 	{
 		write(1, '-', 1);
 	}
-	write(1, digit, 5);
-
+	while( it )
+	{
+		it--;
+		write(1, digit[it], 1);
+	}
 }
 
 /* here i guess i have to find something smart to succeed */
