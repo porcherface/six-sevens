@@ -10,22 +10,24 @@
 echo "
 ############################################################"
 
-test_subject_url=""
+test_subject_url="git@vogsphere.42roma.it:vogsphere/intra-uuid-a009fe86-3b9a-4a04-af9e-57993daf4b28-3386740"
 cd testenv
 rm -rf *-*-*-* 
 ls -lart
 echo "
 ############################################################"
 
-#git init
-#git clone $test_subject_url
+git init
+git clone $test_subject_url
 ls -lart
 cd ..
 ######################
 # target init
 
 cd testenv
-test_subject=$(find . -mindepth 1 -maxdepth 1 -type d -printf '%f\n')
+#test_subject=$(find . -mindepth 1 -maxdepth 1 -type d -printf '%f\n')
+test_subject=cut -c34 $test_subject_url
+
 logfile=testenv/log.log
 cd ..
 
@@ -145,7 +147,6 @@ read -n 1 -r -s -p $'Press enter to continue...\n'
 # ##############H$@#######@@##############
 # ##############X%########M$M#############
 # +M##########H:            .$##########X=
-
 ##########################
 # test 00
 number=00

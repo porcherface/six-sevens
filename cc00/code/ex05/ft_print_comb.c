@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_alphabet.c                                :+:      :+:    :+:   */
+/*   ft_print_comb.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amazzei <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -11,17 +11,33 @@
 /* ************************************************************************** */
 #include <unistd.h>
 
-void ft_print_alphabet(void)
+void ft_print_comb(void)
 {
-	int counter;
-	char c;
-
-	counter = 26;
-	while ( counter )
+	char first;
+	char second;
+	char third;
+	
+	first = '0';
+	second = '1';
+	third = '2';
+	while (first < '7')
 	{
-		c = 'z' - counter + 1;
-		write(1, &c, 1);	
-		counter--;
+		second = first + 1;
+		while (second < '9')
+		{
+			third = second + 1;
+			while (third < '9' + 1)
+			{
+				write(1, &first, 1);
+				write(1, &second, 1);
+				write(1, &third, 1);
+				write(1, ", ", 2);
+				third++;
+			}
+			second++;
+		}
+		first++;
 	}
-	return;	
+	write(1, ", 789", 5);
+	return;
 }

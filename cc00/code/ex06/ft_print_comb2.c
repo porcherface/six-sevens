@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_alphabet.c                                :+:      :+:    :+:   */
+/*   ft_print_comb2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amazzei <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -11,17 +11,31 @@
 /* ************************************************************************** */
 #include <unistd.h>
 
-void ft_print_alphabet(void)
+void ft_print_comb2(void)
 {
-	int counter;
-	char c;
+	int cnt;
+	int cnt2;
+	char first_digit_d; 
 
-	counter = 26;
-	while ( counter )
+	cnt = 0;
+	while (cnt < 98)
 	{
-		c = 'z' - counter + 1;
-		write(1, &c, 1);	
-		counter--;
+		cnt2 = cnt++ + 1;
+		while (cnt2 < 100)
+		{
+			first_digit_d = (cnt - 1 - ( ( cnt - 1 ) % 10 + '0' ) + '0') / 10  + '0';
+			write(1, &first_digit_d, 1);
+			first_digit_d = ( (cnt - 1) % 10 + '0' );
+			write(1, &first_digit_d, 1);
+			write(1, " ", 1);
+ 			first_digit_d = (cnt2 - ( cnt2 % 10 + '0' ) + '0') / 10  + '0';
+			write(1, &first_digit_d, 1);
+			first_digit_d = ( cnt2 % 10 + '0' );
+			write(1, &first_digit_d, 1);
+			write(1, ", ", 2);
+			cnt2++;
+		}
 	}
-	return;	
-}
+	write(1, "98 99", 5);
+	return;
+} 

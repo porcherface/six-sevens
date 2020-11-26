@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_alphabet.c                                :+:      :+:    :+:   */
+/*   ft_is_negative.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amazzei <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -11,17 +11,18 @@
 /* ************************************************************************** */
 #include <unistd.h>
 
-void ft_print_alphabet(void)
+void ft_is_negative(int n)
 {
-	int counter;
 	char c;
 
-	counter = 26;
-	while ( counter )
+	if (n < 0)
 	{
-		c = 'z' - counter + 1;
-		write(1, &c, 1);	
-		counter--;
+		c = 'N';
 	}
-	return;	
+	else
+	{
+		c = 'P';		
+	}
+	write(1, &c, 1);
+	return;
 }

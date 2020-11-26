@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_alphabet.c                                :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amazzei <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -11,17 +11,30 @@
 /* ************************************************************************** */
 #include <unistd.h>
 
-void ft_print_alphabet(void)
+void ft_putnbr(int nb)
 {
-	int counter;
-	char c;
+	char digits[5];
+	int iterator;
 
-	counter = 26;
-	while ( counter )
+	iterator = 0;
+	write(1, "-", 1 * (nb < 0));
+	nb = nb * (nb < 0) * -1 + nb * (nb >= 0);
+	while ( nb * nb > 0 || iterator == 0)
 	{
-		c = 'z' - counter + 1;
-		write(1, &c, 1);	
-		counter--;
+		digits[iterator++] = nb % 10 + '0';
+ 		nb = ( ( nb - ( nb % 10 ) ) / 10 ) * (nb > 0) + 0;
 	}
-	return;	
+	if ( !nb )
+	{
+		iterator--;
+	}	
+	while ( iterator + 1)
+	{
+		if( digits[iterator] || iterator == 0)
+		{
+			write(1, &digits[iterator], 1);
+		}
+		iterator--;
+	}
+	return;
 }
