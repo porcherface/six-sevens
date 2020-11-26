@@ -33,9 +33,42 @@ void ft_putchar(const char c)
 	return;
 }
 
+/* a possible implementation */
 void ft_print_alphabet(void)
 {
 	write(1, "abcdefghijklmnopqrstuvwxyz", 26);
+	return;	
+}
+
+/* another possible implementation*/
+void ft_print_alphabet(void)
+{
+	int counter;
+
+	counter = 26;
+	while ( counter )
+	{
+		/* needs test, usage might be wrong (arg is char, not an addr) */
+		write(1, 'z' - counter, 1);
+		counter--
+	}
+	return;	
+}
+
+/* a superuber pedantic implementation */
+
+void ft_print_alphabet(void)
+{
+	int counter;
+	char c;
+
+	counter = 26;
+	while ( counter )
+	{
+		c = 'z' - counter;
+		write(1, &c, 1);	
+		counter--;
+	}
 	return;	
 }
 
