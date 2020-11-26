@@ -8,7 +8,7 @@ void ft_is_negative(int n);
 void ft_print_comb(void);
 void ft_print_comb2(void);
 void ft_putnbr(int nb);
-void ft_print_combn(int nb);
+void ft_print_combn(int n);
 
 int main(void)
 { 
@@ -19,8 +19,9 @@ int main(void)
 	ft_is_negative(int n);
 	ft_print_comb(void);
 	ft_print_comb2();
-    ft_putnbr( 65535);
-	ft_putnbr( 65535);
+    ft_putnbr( 0);
+	ft_putnbr( 65535 / 2 );
+	ft_putnbr( -65535 / 2 );
 	ft_print_combn(int nb);
 
 	return;
@@ -150,7 +151,7 @@ void ft_putnbr(int nb)
 }
 
 /* here i guess i have to find something smart to succeed */
-void ft_print_combn(int nb);
+void ft_print_combn(int n)
 {
 	return;
 }
