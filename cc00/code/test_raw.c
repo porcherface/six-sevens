@@ -49,8 +49,8 @@ void ft_print_alphabet(void)
 	while ( counter )
 	{
 		/* needs test, usage might be wrong (arg is char, not an addr) */
-		write(1, 'z' - counter, 1);
-		counter--
+		write(1, 'z' - counter + 1, 1);
+		counter--;
 	}
 	return;	
 }
@@ -65,7 +65,7 @@ void ft_print_alphabet(void)
 	counter = 26;
 	while ( counter )
 	{
-		c = 'z' - counter;
+		c = 'z' - counter + 1;
 		write(1, &c, 1);	
 		counter--;
 	}
