@@ -27,8 +27,8 @@ void	init_array(int *arr, int n)
 
 void	update_array(int *arr, int n, int level)
 {
-	
-	if (arr[n - 1] != 9 - level) 
+	int last_value = n - 1;
+	if (arr[last_value] != 9 - level) 
 	{
 		arr[n - 1]++;
 	} 
@@ -36,8 +36,8 @@ void	update_array(int *arr, int n, int level)
 	{
 		if (n -1 > 0)
 		{		
-			arr[n - 1] = arr[n - 2]+2;
 			update_array(arr, n-1, level+1);
+			arr[last_value] = arr[last_value - 1] + 1;
 		}
 		else
 		{
