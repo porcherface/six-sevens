@@ -9,9 +9,18 @@
 /*   Updated: 2020/11/26 15:58:16 by amazzei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <unistd.h>
 
-void ft_print_combn(int n)
+#include	<unistd.h>
+
+void	ft_print_combn(int n)
 {
-	return
+	
+	// init array
+
+	//loop 
+
+		//update
+
+		//stop
+	return ;
 }

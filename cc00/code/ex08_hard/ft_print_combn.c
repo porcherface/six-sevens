@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_is_negative.c                                   :+:      :+:    :+:   */
+/*   ft_print_combn.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amazzei <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,18 +12,7 @@
 
 #include	<unistd.h>
 
-void	ft_is_negative(int n)
+void	ft_print_combn(int n)
 {
-	char c;
-
-	if (n < 0)
-	{
-		c = 'N';
-	}
-	else
-	{
-		c = 'P';		
-	}
-	write(1, &c, 1);
-	return ;
+	return
 }

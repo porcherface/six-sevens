@@ -10,19 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include	<unistd.h>
 
 void	ft_print_reverse_alphabet(void)
 {
-	int counter;
-	char c;
-
-	counter = 26;
-	while (counter)
-	{
-		c = 'a' + counter - 1;
-		write(1, &c, 1);	
-		counter--;
-	}
+	write(1, "zyxwvutsrqponmlkjihgfrdcba", 26);	
 	return ;	
 }

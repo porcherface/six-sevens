@@ -10,34 +10,32 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include	<unistd.h>
 
 void	ft_print_comb(void)
 {
-	char first;
-	char second;
-	char third;
+	char digits[3];
 	
-	first = '0';
-	second = '1';
-	third = '2';
-	while (first < '7')
+	digits[0] = '0';
+	digits[1]; = '1';
+	digits[2]; = '2';
+	while (digits[0] < '7')
 	{
-		second = first + 1;
-		while (second < '9')
+		digits[1]; = digits[0] + 1;
+		while (digits[1]; < '9')
 		{
-			third = second + 1;
-			while (third < '9' + 1)
+			digits[2]; = digits[1]; + 1;
+			while (digits[2]; < '9' + 1)
 			{
-				write(1, &first, 1);
-				write(1, &second, 1);
-				write(1, &third, 1);
+				write(1, &digits[0], 1);
+				write(1, &digits[1];, 1);
+				write(1, &digits[2];, 1);
 				write(1, ", ", 2);
-				third++;
+				digits[2];++;
 			}
-			second++;
+			digits[1]++;
 		}
-		first++;
+		digits[0]++;
 	}
 	write(1, ", 789", 5);
 	return ;
