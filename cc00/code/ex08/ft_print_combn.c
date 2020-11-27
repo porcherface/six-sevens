@@ -25,10 +25,10 @@ void	init_array(int *arr, int n)
 	return ;
 }
 
-void	update_array(int *arr, int n)
+void	update_array(int *arr, int n, int level)
 {
 	
-	if (arr[n - 1] != 10 - n) 
+	if (arr[n - 1] != 10 - n + 1 + level) 
 	{
 		arr[n - 1]++;
 	} 
@@ -36,8 +36,8 @@ void	update_array(int *arr, int n)
 	{
 		if (n -1 > 0)
 		{		
-			arr[n - 1] = arr[n - 2]+1;
-			update_array(arr, n-1);
+			arr[n - 1] = arr[n - 2]+2;
+			update_array(arr, n-1, level+1);
 		}
 		else
 		{
@@ -51,24 +51,21 @@ int	terminate(int arr[10], int n)
 {
 	int iterator;
 	int terminate;
-	int counter;
 
 	terminate = 1;
-	iterator = n-1;
-	counter = 0;
-	while (iterator >= 0)
+	iterator = 0;
+ 	while (iterator < n)
 	{
-		if (arr[iterator] != 9 - counter)
+		if (arr[iterator] != 9 + iterator - n + 1)
 		{	
 			terminate = 0;
 		}
-		iterator--;
-		counter++;
-	}
+		iterator++;
+ 	}
 	return (terminate);
 }
 
-void	write_ctoa(int arr[10], int n)
+void	write_ntoc(int arr[10], int n)
 {
 	int iterator;
 	char c;
@@ -92,15 +89,13 @@ void	ft_print_combn(int n)
 	if (n <= 10 && n >= 1)
 	{
 		init_array(arrp, n);
+		write_ntoc(arr, n);
 		while (!terminate(arr, n))
-		{
-			write_ctoa(arr, n);
+		{	
 			write(1, ", ", 2);
-			update_array(arrp,n);
-
+			update_array(arrp,n,0);
+			write_ntoc(arr, n);
 		}
-		write(1, arrp, n);
-	}
-	return ;
+ 	}
+	return;
 }
-
