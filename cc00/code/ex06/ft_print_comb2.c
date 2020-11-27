@@ -10,31 +10,31 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	<unistd.h>
+#include <unistd.h>
 
 void	ft_print_comb2(void)
 {
-	int cnt;
-	int cnt2;
-	char digit; 
+	int c1;
+	int c2;
+	char d;
 
-	cnt = 0;
-	while (cnt < 98)
+	c1 = 0;
+	while (c1 < 98)
 	{
-		cnt2 = cnt++ + 1;
-		while (cnt2 < 100)
+		c2 = c1++ + 1;
+		while (c2 < 100)
 		{
-			digit = (cnt - 1 - ((cnt - 1 ) % 10 + '0') + '0') / 10  + '0';
-			write(1, &digit, 1);
-			digit = ( (cnt - 1) % 10 + '0');
-			write(1, &digit, 1);
+			d = (c1 - 1 - ((c1 - 1) % 10 + '0') + '0') / 10 + '0';
+			write(1, &d, 1);
+			d = ((c1 - 1) % 10 + '0');
+			write(1, &d, 1);
 			write(1, " ", 1);
- 			digit = (cnt2 - (cnt2 % 10 + '0') + '0') / 10  + '0';
-			write(1, &digit, 1);
-			digit = ( cnt2 % 10 + '0');
-			write(1, &digit, 1);
+			d = (c2 - (c2 % 10 + '0') + '0') / 10 + '0';
+			write(1, &d, 1);
+			d = (c2 % 10 + '0');
+			write(1, &d, 1);
 			write(1, ", ", 2);
-			cnt2++;
+			c2++;
 		}
 	}
 	write(1, "98 99", 5);

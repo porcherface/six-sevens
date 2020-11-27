@@ -6,16 +6,16 @@
 /*   By: amazzei <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 15:58:14 by amazzei           #+#    #+#             */
-/*   Updated: 2020/11/26 15:58:16 by amazzei          ###   ########.fr       */
+/*   Updated: 2020/11/27 12:16:55 by amazzei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	<unistd.h>
+#include <unistd.h>
 
 void	ft_print_alphabet(void)
 {
-	char c;
-	int counter;
+	char	c;
+	int		counter;
 
 	counter = 26;
 	while (counter)

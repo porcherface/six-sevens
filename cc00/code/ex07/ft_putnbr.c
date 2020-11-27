@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	<unistd.h>
+#include <unistd.h>
 
 void	ft_putnbr(int nb)
 {
@@ -20,18 +20,18 @@ void	ft_putnbr(int nb)
 	iterator = 0;
 	write(1, "-", 1 * (nb < 0));
 	nb = nb * (nb < 0) * -1 + nb * (nb >= 0);
-	while ( nb * nb > 0 || iterator == 0)
+	while (nb * nb > 0 || iterator == 0)
 	{
 		digits[iterator++] = nb % 10 + '0';
- 		nb = ( ( nb - ( nb % 10 ) ) / 10 ) * (nb > 0) + 0;
+		nb = ((nb - (nb % 10)) / 10) * (nb > 0) + 0;
 	}
-	if ( !nb )
+	if (!nb)
 	{
 		iterator--;
-	}	
-	while ( iterator + 1)
+	}
+	while (iterator + 1)
 	{
-		if( digits[iterator] || iterator == 0)
+		if (digits[iterator] || iterator == 0)
 		{
 			write(1, &digits[iterator], 1);
 		}

@@ -14,5 +14,4 @@ others=$others"ex04/ft_is_negative.c "
 
 gcc $main $others -Wall -Wextra -Werror -o c00_test.out
 
-
 ./c00_test.out > $oracle

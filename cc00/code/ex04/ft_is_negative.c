@@ -10,11 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	<unistd.h>
+#include <unistd.h>
 
 void	ft_is_negative(int n)
 {
-	char c;
+	char	c;
 
 	if (n < 0)
 	{
@@ -22,7 +22,7 @@ void	ft_is_negative(int n)
 	}
 	else
 	{
-		c = 'P';		
+		c = 'P';
 	}
 	write(1, &c, 1);
 	return ;
