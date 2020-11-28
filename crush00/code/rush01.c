@@ -14,14 +14,10 @@ void ft_putchar(char c);
 
 void ft_putchar_key(c)
 {
-	if(c == 'a')
+	if(c == 'a' || c == 'e')
 		c = '/';
-	if(c == 'b')
+	if(c == 'b' || c == 'd')
 		c = '\\';
-	if(c == 'd')
-		c = '\\';
-	if(c == 'e')
-		c = '/';
 	if(c == 'c' || c == 'g')
 		c = '*';
 	ft_putchar(c); 

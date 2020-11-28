@@ -14,14 +14,13 @@ void ft_putchar(char c);
 
 void ft_setkey(char *key)
 {
-	key[0] = 'a';
-	key[1] = 'b';
-	key[2] = 'c';
-	key[3] = 'd';
-	key[4] = 'r';
-	key[5] = 'q';
-	key[6] = 'g';
-	key[7] = '*';
+	key[0] = 'A';
+	key[1] = 'C';
+	key[2] = 'A';
+	key[3] = 'C';
+	key[4] = 'B';
+	key[5] = 'B';
+	key[6] = ' ';
 	return ; 
 }
 
@@ -52,7 +51,6 @@ void ft_setchar(char *c, int *row, int *col, char key[])
 			*c = key[5];
 	}
 	ft_putchar(*c);
-
 }
 
 void ft_putstring(char *key, int *row, int *col)

@@ -20,8 +20,6 @@ void ft_putchar_key(c)
 		c = 'C';
 	if (c == 'g' || c == 'c')
 		c = 'B';
-	if (c == 'i')
-		c = ' ';
 	ft_putchar(c); 
 }
 
