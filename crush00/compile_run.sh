@@ -1,3 +1,4 @@
+  
 #!/bin/bash
 cd code
 main=main.c
