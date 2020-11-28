@@ -12,56 +12,59 @@
 
 void ft_putchar(char c);
 
-void ft_putchar_key(c)
+void ft_setkey(char *key)
 {
-	if (c == 'a' || c == 'd')
-		c = 'A';
-	if (c == 'b' || c == 'e')
-		c = 'C';
-	if (c == 'g' || c == 'c')
-		c = 'B';
-	ft_putchar(c); 
+	key[0] = 'a';
+	key[1] = 'b';
+	key[2] = 'c';
+	key[3] = 'd';
+	key[4] = 'r';
+	key[5] = 'q';
+	key[6] = 'g';
+	key[7] = '*';
+	return ; 
 }
 
-void ft_setchar(char *c, int *row, int *col)
+void ft_setchar(char *c, int *row, int *col, char key[])
 {
-	*c = ' ';
+	*c = key[6];
 	if(row[0] == 0)
 	{
 		if(col[0] == 0)
-			*c = 'a';
-		else if(col[0] == col[1] - 1)
-			*c = 'b';
+			*c = key[0];
+		else if(col[0] == col[1])
+			*c = key[1];
 		else
-			*c = 'c';
+			*c = key[4];
 	}
 	else if(row[0] == row[1] - 1)
 	{
 		if(col[0] == 0)
-			*c = 'd';
-		else if(col[0] == col[1] - 1)
-			*c = 'e';
+			*c = key[2];
+		else if(col[0] == col[1])
+			*c = key[3];
 		else
-			*c = 'c';	
+			*c = key[4];	
 	}
 	else
 	{
-		if(col[0] == 0 || col[0] == col[1] - 1)
-			*c = 'g';
+		if(col[0] == 0 || col[0] == col[1] )
+			*c = key[5];
 	}
+	ft_putchar(*c);
+
 }
 
-void ft_putstring(int key, int *row, int *col)
+void ft_putstring(char *key, int *row, int *col)
 {
 	char c;
 
-	ft_setchar(&c, row, col);
-	col[0]++;
-	ft_putchar_key(c);
+	ft_setchar(&c, row, col, key);
+	
 	if (col[0] < col[1])
 	{
+ 		col[0]++;
  		ft_putstring(key, row, col);
-
 	}
 	if (col[0] == col[1])
 	{
@@ -75,9 +78,10 @@ void rush(int x, int y)
 {
 	int row[2];
 	int col[2];
-	int key;
+	char key[7];
 
-	key = 0;
+
+	ft_setkey(key);
 	row[0] = 0;
 	row[1] = y;
 	col[0] = 0;
