@@ -12,35 +12,72 @@
 
 void ft_putchar(char c);
 
-void ft_putstring(int row, int key, int x, int level)
+void ft_setchar(char *c, int *row, int *col)
+{
+	if(row[0] == 0)
+	{
+		if(col[0] == 0)
+			*c = 'a';
+		else if(col[0] == col[1] - 1)
+			*c = 'b';
+		else
+			*c = 'c';
+	}
+	else if(row[0] == row[1] - 1)
+	{
+		if(col[0] == 0)
+			*c = 'd';
+		else if(col[0] == col[1] - 1)
+			*c = 'e';
+		else
+			*c = 'f';	
+ 	}
+	else
+	{
+		if(col[0] == 0)
+			*c = 'g';
+		else if(col[0] == col[1] - 1)
+			*c = 'h';
+		else
+			*c = 'i';
+	}
+}
+
+void ft_putstring(int key, int *row, int *col)
 {
 	char c;
 
-	c = 'k' + key;
+	ft_setchar(&c, row, col);
+	col[0]++;
 	ft_putchar(c);
-	if (level < x - 1)
+	if (col[0] < col[1])
 	{
-		ft_putstring(row, key, x, level + 1);	
+ 		ft_putstring(key, row, col);
+
 	}
-	if (!level)
+	if (col[0] == col[1])
 	{
 		ft_putchar('\n');
+		col[0] = 0;
 	}
 	return ;
 }	
 
-
 void rush99(int x, int y)
 {
-	int row;
+	int row[2];
+	int col[2];
 	int key;
 
 	key = 0;
-	row = 0;
-	while(row < y)
+	row[0] = 0;
+	row[1] = y;
+	col[0] = 0;
+	col[1] = x;
+	while(row[0] < row[1])
 	{
-		ft_putstring(row, key, x, 0);
-		row++;	
+		ft_putstring(key, row, col);
+		row[0]++;
 	}
 	return ;
 }
