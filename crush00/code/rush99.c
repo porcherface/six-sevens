@@ -12,8 +12,15 @@
 
 void ft_putchar(char c);
 
+void ft_putchar_key(c)
+{
+	ft_putchar(c); 
+}
+
+
 void ft_setchar(char *c, int *row, int *col)
 {
+	*c = 'i';
 	if(row[0] == 0)
 	{
 		if(col[0] == 0)
@@ -30,16 +37,13 @@ void ft_setchar(char *c, int *row, int *col)
 		else if(col[0] == col[1] - 1)
 			*c = 'e';
 		else
-			*c = 'f';	
+			*c = 'c';	
  	}
 	else
 	{
-		if(col[0] == 0)
+		if(col[0] == 0 || col[0] == col[1] - 1)
 			*c = 'g';
-		else if(col[0] == col[1] - 1)
-			*c = 'h';
-		else
-			*c = 'i';
+		
 	}
 }
 
@@ -49,7 +53,7 @@ void ft_putstring(int key, int *row, int *col)
 
 	ft_setchar(&c, row, col);
 	col[0]++;
-	ft_putchar(c);
+	ft_putchar_key(c);
 	if (col[0] < col[1])
 	{
  		ft_putstring(key, row, col);
