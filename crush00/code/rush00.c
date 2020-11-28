@@ -14,13 +14,20 @@ void ft_putchar(char c);
 
 void ft_putchar_key(c)
 {
+	if( c == 'a' || c == 'b' || c == 'd' || c == 'e')
+		c = 'o';
+	if( c == 'g')
+		c = '|';
+	if(c == 'c')
+		c = '-';
+
 	ft_putchar(c); 
 }
 
 
 void ft_setchar(char *c, int *row, int *col)
 {
-	*c = 'i';
+	*c = ' ';
 	if(row[0] == 0)
 	{
 		if(col[0] == 0)
@@ -67,7 +74,7 @@ void ft_putstring(int key, int *row, int *col)
 	return ;
 }	
 
-void rush99(int x, int y)
+void rush(int x, int y)
 {
 	int row[2];
 	int col[2];
