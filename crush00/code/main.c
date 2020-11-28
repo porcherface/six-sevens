@@ -14,5 +14,13 @@ void rush99(int x, int y);
 
 int main(void)
 {
-	rush99(3,7);	
+	rush99(7,17);	
+
+	rush99(3,1);
+
+	rush99(1,3);
+
+	rush99(1,1);
+
+	rush99(0,0);
 }
