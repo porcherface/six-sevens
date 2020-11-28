@@ -1,14 +1,13 @@
   
 #!/bin/bash
-cd code
-main=main.c
-oracle=c00_oracle.txt
 
+main=code/main.c
+oracle=crush_oracle.txt
+name=rusherino.out
 #ls ex0*/*
-others=""
-others=$others"code/ft_putchar.c rushXX.c "
+others="code/ft_putchar.c code/rush99.c "
 
 Norminette $main $others -R CheckForbiddenSourceHeader
-gcc $main $others -Wall -Wextra -Werror -o c00_test.out
+gcc $main $others -Wall -Wextra -Werror -o $name
 
-./c00_test.out > $oracle
+./$name #> $oracle
