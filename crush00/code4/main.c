@@ -23,17 +23,9 @@ int main(void)
         write(1,"$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n",30);
         write(1,"$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n",30);
         write(1,"$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n",30);
-	
-
-
-
-
-
-
 	iterator = 0;
 	write(1,"    print rect 6 3...\n",23);
 	rush(6,3);
-	
 	write(1,"    print lines 1to5...\n",24);
 	while (iterator < 5)
 	{
@@ -49,7 +41,6 @@ int main(void)
 		rush(iterator,2);
 		rush(2,iterator);
 		write(1,"$$$$$$$$$$:\n",12);
-	
 	}	
 	write(1,"    print nothing...\n",21);
 	while (iterator--)
@@ -60,5 +51,5 @@ int main(void)
 		rush(42,-iterator);
 		rush(-42,-42);
 	}
-
+	return (0);
 }
