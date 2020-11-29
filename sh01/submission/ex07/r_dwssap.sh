@@ -1,0 +1,1 @@
+cat /etc/passwd | grep -v '^#' | awk 'NR % 2 == 1'
