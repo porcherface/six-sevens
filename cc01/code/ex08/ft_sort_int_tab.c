@@ -21,7 +21,7 @@ void	ft_sort_int_tab(int *tab, int size)
 	{
 		val = tab[i];
 		j = i - 1;
-		while (j >= 0 && a[j] > val)
+		while (j >= 0 && tab[j] > val)
 		{
 			tab[j + 1] = tab[j];
 			j--;

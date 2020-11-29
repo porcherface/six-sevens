@@ -10,13 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_ultimate_div_mod(int *a, int *b);
+void	ft_ultimate_div_mod(int *a, int *b)
 {
-	int *m;
-	int *d;
+	int m;
+	int d;
 
-	*m = *a % *b;
-	*d = (*a - *m) / *b;
-	*a = *d;
-	*a = *m;
+	m = *a % *b;
+	d = *a / *b;
+	*a = d;
+	*b = m;
 }
