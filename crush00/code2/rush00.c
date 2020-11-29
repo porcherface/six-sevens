@@ -58,7 +58,6 @@ void ft_putstring(char *key, int *row, int *col)
 	char c;
 
 	ft_setchar(&c, row, col, key);
-	
 	if (col[0] < col[1])
 	{
  		col[0]++;
