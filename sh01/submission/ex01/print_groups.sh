@@ -1,2 +1,2 @@
 #!/bin/bash
-id -p $FT_USER -F 
+id -Gn $FT_USER | tr ' ' ','
