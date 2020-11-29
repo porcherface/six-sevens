@@ -1,6 +1,7 @@
   
 #!/bin/bash
-
+rm builds
+mkdir builds
 main=code3/main.c
 #ls ex0*/*
 
@@ -32,4 +33,4 @@ name=rush04
 others="code3/ft_putchar.c code3/rush04.c "
 #Norminette $main $others -R CheckForbiddenSourceHeader
 gcc $main $others -Wall -Wextra -Werror -o builds/$name".out"
-./$name".out" # > builds/$name".log"
+./builds/$name".out" # > builds/$name".log"
