@@ -23,5 +23,6 @@ void	ft_rev_int_tab(int *tab, int size)
 		tmp2 = tab[size - 1 - iterator];
 		tab[iterator] = tmp2;
 		tab[size - 1 - iterator] = tmp1;
+		iterator++;
 	}
 }

@@ -58,6 +58,11 @@ int main()
 	ft_putstr("divmod");
 	ft_putnbr(d);
 	ft_putnbr(m);
+	ft_putstr("divmod");
+	ft_ultimate_div_mod(&d, &m);
+	ft_putnbr(d);
+	ft_putnbr(m);
+	ft_putstr("rev");
 	ft_rev_int_tab(str,10);
 	it=0;
 	while(it<10)
@@ -65,7 +70,7 @@ int main()
 		ft_putnbr(str[it]);
 		it++;
 	}
-
+	ft_putstr("rev");
 	ft_rev_int_tab(str,7);
 	it=0;
 	while(it<10)
@@ -73,6 +78,7 @@ int main()
 		ft_putnbr(str[it]);
 		it++;
 	}
+	ft_putstr("sort");
 	ft_sort_int_tab(str,10);
 	it=0;
 	while(it<10)
