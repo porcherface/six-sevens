@@ -10,17 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-char *ft_strcpy(char *dest, char *src)
+char	*ft_strcpy(char *dest, char *src)
 {
 	int it;
 
 	it = 0;
-	while(src[it] != '\0')
+	while (src[it] != '\0')
 	{
 		dest[it] = src[it];
 		it++;
 	}
 	if (src[it] == '\0')
 		dest[it] = src[it];
-	return dest;
+	return (dest);
 }

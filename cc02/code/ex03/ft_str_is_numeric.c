@@ -10,19 +10,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int check_num3(char c)
+int	check_num3(char c)
 {
-	if (c >= '0' && c <= '9' )
-	   return 1;
-	return 0;
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
 }
 
-int ft_str_is_numeric(char *str)
+int	frt_str_is_numeric(char *str)
 {
 	int it;
-	
+
 	it = 0;
-	while(str[it] != '\0')	
+	while (str[it] != '\0')
 	{
 		if (!check_num3(str[it]))
 		{

@@ -10,24 +10,24 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int check_alphau8(char c)
+int		check_alphau8(char c)
 {
 	if (c >= 'A' && c <= 'Z')
-	   return 1;
-	return 0;	
+		return (1);
+	return (0);
 }
 
-char go_lowcase8(char c)
+char	go_lowcase8(char c)
 {
-	return (c + 0x20);	
+	return (c + 0x20);
 }
 
-char* ft_strlowcase(char *str)
+char	*ft_strlowcase(char *str)
 {
 	int it;
-	
+
 	it = 0;
-	while(str[it] != '\0')	
+	while (str[it] != '\0')
 	{
 		if (check_alphau8(str[it]))
 		{

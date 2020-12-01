@@ -12,42 +12,61 @@
 
 #include <unistd.h>
 
-int check_print11(char c)
+int		check_print11(char c)
 {
 	if (c >= 0x20 && c <= 0x7f)
-		return 1;
-	return 0;
+		return (1);
+	return (0);
 }
 
-int go_nonprint11(char c)
+int		go_nonprint11(char c)
 {
 	return (int)c;
 }
 
-void ft_putstr_non_printable(char *str)
+void	put_specials(int nonprinto)
 {
-	int it;
-	int it2;
-	int nonprinto;
+	char c;
+	char d;
 
+	if (nonprinto > 16)
+	{
+		d = nonprinto / 16;
+		if (d < 10)
+			c = d + '0';
+		else
+			c = d - 10 + 'a';
+		write(1, &c, 1);
+	}
+	nonprinto = nonprinto % 16;
+	if (nonprinto < 10)
+		c = nonprinto + '0';
+	else
+		c = nonprinto - 10 + 'a';
+	write(1, &c, 1);
+}
+
+void	ft_putstr_non_printable(char *str)
+{
+	int		it;
+	int		it2;
+	int		nonprinto;
+	char	digit;
 
 	it = 0;
 	while (str[it] != '\0')
 	{
-		if(!check_print11(str[it]))
+		if (!check_print11(str[it]))
 		{
-			str[it] = '\\';
 			nonprinto = go_nonprint11(str[it]);
-			/* nonprinto e'un int a due digits (from 0x00 to 0x19) */ 
-			/* putto nonprinto in str it+1 e (se necessario) str it+2 */
-			
+			str[it] = '\\';
+			write(1, &str[it], 1);
+			put_specials(nonprinto);
+		}
+		else
+		{
+			write(1, &str[it], 1);
 		}
 		it++;
-	}
-	it2 = 0;
-	while (it2 < it)
-	{
-		write(1,&str[it2],1);
-		it2++;
 	}
 }

@@ -10,22 +10,21 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int check_print6(char c)
+int	check_print6(char c)
 {
 	if (c >= 0x20 && c <= 0x7f)
-		return 1;
-	return 0;
+		return (1);
+	return (0);
 }
 
-
-int ft_str_is_printable(char *str)
+int	ft_str_is_printable(char *str)
 {
 	int it;
-	
+
 	it = 0;
-	while(str[it] != '\0')
+	while (str[it] != '\0')
 	{
-		if ( !check_print6(str[it]))
+		if (!check_print6(str[it]))
 		{
 			return (0);
 		}

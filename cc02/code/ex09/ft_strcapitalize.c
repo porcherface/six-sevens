@@ -10,26 +10,26 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int check_alpha9(char c)
+int		check_alpha9(char c)
 {
-	if ((c >= 'a' && c <= 'z') || (c>='A' && c<= 'Z'))
-	   return 1;
-	return 0;
+	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
+		return (1);
+	return (0);
 }
 
-int check_num9(char c)
+int		check_num9(char c)
 {
-	if (c >= '0' && c <= '9' )
-	   return 1;
-	return 0;
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
 }
 
-char go_upcase9(char c)
+char	go_upcase9(char c)
 {
 	return (c - 0x20);
 }
 
-char *ft_strcapitalize(char *str)
+char	*ft_strcapitalize(char *str)
 {
 	int it;
 	int is_first;
@@ -38,22 +38,18 @@ char *ft_strcapitalize(char *str)
 	is_first = 1;
 	while (str[it] != '\0')
 	{
-		if((check_alpha9(str[it]) || check_num9(str[it])) && is_first)
+		if ((check_alpha9(str[it]) || check_num9(str[it])) && is_first)
 		{
 			is_first = 0;
-			if( check_alpha9(str[it]))
+			if (check_alpha9(str[it]))
 			{
-
 				str[it] = go_upcase9(str[it]);
 			}
 		}
-
-
 		if (str[it] == ' ' || str[it] == '.' || str[it] == '\n')
 		{
 			is_first = 1;
 		}
-
 		it++;
 	}
 	return (str);

@@ -10,22 +10,21 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int check_alphau5(char c)
+int	check_alphau5(char c)
 {
 	if (c >= 'A' && c <= 'Z')
-	   return 1;
-	return 0;
+		return (1);
+	return (0);
 }
 
-
-int ft_str_is_uppercase(char *str)
+int	ft_str_is_uppercase(char *str)
 {
 	int it;
-	
+
 	it = 0;
-	while(str[it] != '\0')	
+	while (str[it] != '\0')
 	{
-		if ( !check_alphau5(str[it]))
+		if (!check_alphau5(str[it]))
 		{
 			return (0);
 		}

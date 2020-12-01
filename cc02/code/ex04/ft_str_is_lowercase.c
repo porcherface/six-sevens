@@ -10,21 +10,21 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int check_alphal4(char c)
+int	check_alphal4(char c)
 {
 	if (c >= 'a' && c <= 'z')
-	   return 1;
-	return 0;	
+		return (1);
+	return (0);
 }
 
-int ft_str_is_lowercase(char *str)
+int	ft_str_is_lowercase(char *str)
 {
 	int it;
-	
+
 	it = 0;
-	while(str[it] != '\0')	
+	while (str[it] != '\0')
 	{
-		if ( !check_alphal4(str[it]))
+		if (!check_alphal4(str[it]))
 		{
 			return (0);
 		}

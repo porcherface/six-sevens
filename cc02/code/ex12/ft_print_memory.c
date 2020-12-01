@@ -12,6 +12,10 @@
 
 #include <unistd.h>
 
+void print_thisaddr(void *addr)
+{
+}
+
 void *ft_print_memory(void *addr, unsigned int size)
 {
 	unsigned int it;
@@ -19,7 +23,8 @@ void *ft_print_memory(void *addr, unsigned int size)
 	it = 0;
 	while(it < size)
 	{
-		write(1, addr+it, 16);
+		print_thisaddr( addr+it);
+		//write(1, addr+it, 16);
 		it++;
 	}
 	return (addr);
