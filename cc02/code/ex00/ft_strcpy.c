@@ -18,8 +18,9 @@ char *ft_strcpy(char *dest, char *src)
 	while(src[it] != '\0')
 	{
 		dest[it] = src[it];
+		it++;
 	}
-	if (src[it + 1] == '\0')
-		dest[it + 1] = src[it + 1];
+	if (src[it] == '\0')
+		dest[it] = src[it];
 	return dest;
 }

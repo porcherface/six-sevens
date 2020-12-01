@@ -10,14 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int check_alphau(char c)
+int check_alphau8(char c)
 {
 	if (c >= 'A' && c <= 'Z')
 	   return 1;
 	return 0;	
 }
 
-char go_lowcase(char c)
+char go_lowcase8(char c)
 {
 	return (c - 26);	
 }
@@ -26,12 +26,14 @@ char* ft_strlowcase(char *str)
 {
 	int it;
 	
+	it = 0;
 	while(str[it] != '\0')	
 	{
-		if (check_alphau(str[it]))
+		if (check_alphau8(str[it]))
 		{
-			str[it] = go_lowcase(str[it]);
+			str[it] = go_lowcase8(str[it]);
 		}
+		it++;
 	}
 	return (str);
 }

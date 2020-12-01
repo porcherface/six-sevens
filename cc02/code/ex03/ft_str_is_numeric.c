@@ -10,23 +10,25 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int check_num(char c)
+int check_num3(char c)
 {
 	if (c >= '0' && c <= '9' )
 	   return 1;
-	return 0;	
+	return 0;
 }
 
 int ft_str_is_numeric(char *str)
 {
 	int it;
 	
+	it = 0;
 	while(str[it] != '\0')	
 	{
-		if (!check_num(str[it]))
+		if (!check_num3(str[it]))
 		{
 			return (0);
 		}
+		it++;
 	}
 	return (1);
 }
