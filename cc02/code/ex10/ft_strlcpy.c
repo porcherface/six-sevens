@@ -1,38 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strupcase.c                                     :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amazzei <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/01 12:30:30 by amazzei           #+#    #+#             */
-/*   Updated: 2020/12/01 12:30:44 by amazzei          ###   ########.fr       */
+/*   Created: 2020/12/01 16:16:49 by amazzei           #+#    #+#             */
+/*   Updated: 2020/12/01 16:16:51 by amazzei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-int check_alphal7(char c)
-{
-	if (c >= 'a' && c <= 'z')
-	   return 1;
-	return 0;
-}
 
-char go_upcase7(char c)
+unsigned int ft_strlcpy(char *dest, char *src, unsigned int size)
 {
-	return (c - 0x20);
-}
+	unsigned int it;
 
-char* ft_strupcase(char *str)
-{
-	int it;
-	
 	it = 0;
-	while(str[it] != '\0')	
+	while(it < size && src[it] != '\0')
 	{
-		if (check_alphal7(str[it]))
-		{
-			str[it] = go_upcase7(str[it]);
-		}
+		dest[it] = src[it];
 		it++;
 	}
-	return (str);
+	if (dest[it] == '\0' && it < size - 1)
+		dest[it] = src[it];
+	return it;
 }

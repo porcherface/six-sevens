@@ -19,7 +19,7 @@ int check_alphau8(char c)
 
 char go_lowcase8(char c)
 {
-	return (c - 26);	
+	return (c + 0x20);	
 }
 
 char* ft_strlowcase(char *str)
