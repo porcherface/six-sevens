@@ -14,6 +14,7 @@
 
 void print_thisaddr(void *addr)
 {
+	
 }
 
 void *ft_print_memory(void *addr, unsigned int size)
@@ -24,7 +25,6 @@ void *ft_print_memory(void *addr, unsigned int size)
 	while(it < size)
 	{
 		print_thisaddr( addr+it);
-		//write(1, addr+it, 16);
 		it++;
 	}
 	return (addr);
