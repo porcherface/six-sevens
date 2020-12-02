@@ -12,18 +12,6 @@
 
 #include <unistd.h>
 
-void	init_digits(char *digits)
-{
-	int it;
-
-	it = 0;
-	while (it < 20)
-	{
-		digits[it] = 'z';
-		it++;
-	}
-}
-
 void	print_it(char *digits)
 {
 	int it;
@@ -43,8 +31,13 @@ void	ft_putnbr(int nb)
 {
 	char	digits[20];
 	int		it;
-
-	init_digits(digits);
+	
+	it = 0;
+	while (it < 20)
+	{
+		digits[it] = 'z';
+		it++;
+	}
 	write(1, "-", 1 * (nb < 0));
 	nb = nb * (nb < 0) * -1 + nb * (nb >= 0);
 	it = 19;
@@ -59,5 +52,4 @@ void	ft_putnbr(int nb)
 		it--;
 	}
 	print_it(digits);
-	return ;
 }
