@@ -6,7 +6,7 @@
 /*   By: amazzei <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 12:06:16 by amazzei           #+#    #+#             */
-/*   Updated: 2020/12/01 12:06:54 by amazzei          ###   ########.fr       */
+/*   Updated: 2020/12/02 17:48:54 by amazzei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ char	*ft_strncpy(char *dest, char *src, unsigned int n)
 	while (it < n)
 	{
 		dest[it] = '\0';
+		it++;
 	}
 	return (dest);
 }

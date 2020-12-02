@@ -6,7 +6,7 @@
 /*   By: amazzei <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 16:47:53 by amazzei           #+#    #+#             */
-/*   Updated: 2020/12/01 16:47:54 by amazzei          ###   ########.fr       */
+/*   Updated: 2020/12/02 18:01:37 by amazzei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ void	*ft_print_memory(void *addr, unsigned int size)
 	while (it < size * 16)
 	{
 		print_addr(addr + it);
+		write(1, ": ", 2);
 		print_content(addr + it);
 		it += 16;
 		write(1, "\n", 1);

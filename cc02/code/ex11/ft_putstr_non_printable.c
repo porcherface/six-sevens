@@ -6,7 +6,7 @@
 /*   By: amazzei <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 16:32:48 by amazzei           #+#    #+#             */
-/*   Updated: 2020/12/01 16:32:51 by amazzei          ###   ########.fr       */
+/*   Updated: 2020/12/02 17:58:34 by amazzei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,7 @@ void	put_specials(int nonprinto)
 void	ft_putstr_non_printable(char *str)
 {
 	int		it;
-	int		it2;
 	int		nonprinto;
-	char	digit;
 
 	it = 0;
 	while (str[it] != '\0')
