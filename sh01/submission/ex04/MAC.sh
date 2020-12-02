@@ -1,1 +1,1 @@
-ifconfig -a | grep -Po 'eth \K.*$'
+ifconfig | grep ether | grep -o '..:..:..:..:..:..'

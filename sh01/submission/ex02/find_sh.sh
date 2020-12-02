@@ -1,1 +1,1 @@
-find . -type f -name "*.sh" -printf "%f\n" | tr -d ".sh"
+find . -type f -name "*.sh" | rev | cut -d '/' -f 1 | cut -c4- | rev
