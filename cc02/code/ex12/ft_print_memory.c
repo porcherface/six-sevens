@@ -14,8 +14,8 @@
 
 void	print_hex(char *digits, int print_zeros, int size)
 {
-	int it;
-	char c;
+	int		it;
+	char	c;
 
 	it = 0;
 	while (it < size)
@@ -36,13 +36,13 @@ void	print_hex(char *digits, int print_zeros, int size)
 	}
 }
 
-void print_addr(void *addr)
+void	print_addr(void *addr)
 {
-	unsigned long int addrint;
-	char	digits[16];
-	int		it;
+	unsigned long int	addrint;
+	char				digits[16];
+	int					it;
 
-	addrint = (unsigned long int) addr;	
+	addrint = (unsigned long int)addr;
 	it = 0;
 	while (it < 16)
 		digits[it++] = 'z';
@@ -52,19 +52,20 @@ void print_addr(void *addr)
 		digits[it--] = (addrint % 16) + '0';
 		addrint /= 16;
 	}
-	print_hex(digits, 1, 16);	
+	print_hex(digits, 1, 16);
 	write(1, " ", 1);
 }
 
-void print_content(void *addr)
+void	print_content(void *addr)
 {
-	int it;
-	char digits[2];
-	int num;
+	int		it;
+	char	digits[2];
+	int		num;
+
 	it = 0;
 	while (it < 16)
 	{
-		num =  (*(unsigned long int *)(addr+it));
+		num = (*(unsigned long int *)(addr + it));
 		digits[0] = ((num / 16) % 16) + '0';
 		digits[1] = (num % 16) + '0';
 		print_hex(digits, 0, 2);
@@ -75,25 +76,25 @@ void print_content(void *addr)
 	it = 0;
 	while (it < 16)
 	{
-		digits[0] = *(unsigned char*)(addr +it);
+		digits[0] = *(unsigned char*)(addr + it);
 		if (digits[0] >= 0x20 && digits[0] < 0x7f)
-			write(1,digits,1);
+			write(1, digits, 1);
 		else
-			write(1,".",1);
+			write(1, ".", 1);
 		it++;
 	}
 }
 
-void *ft_print_memory(void *addr, unsigned int size)
+void	*ft_print_memory(void *addr, unsigned int size)
 {
 	unsigned int it;
 
 	it = 0;
-	while(it < size*16)
+	while (it < size * 16)
 	{
-		print_addr(addr+it);
-		print_content(addr+it);
-		it+=16;
+		print_addr(addr + it);
+		print_content(addr + it);
+		it += 16;
 		write(1, "\n", 1);
 	}
 	return (addr);

@@ -20,7 +20,9 @@ char	*ft_strncpy(char *dest, char *src, unsigned int n)
 		dest[it] = src[it];
 		it++;
 	}
-	if (dest[it + 1] == '\0' && it + 1 < n)
-		dest[it + 1] = src[it + 1];
+	while (it < n)
+	{
+		dest[it] = '\0';
+	}
 	return (dest);
 }

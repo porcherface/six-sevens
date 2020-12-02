@@ -17,7 +17,7 @@ int	check_num3(char c)
 	return (0);
 }
 
-int	frt_str_is_numeric(char *str)
+int	ft_str_is_numeric(char *str)
 {
 	int it;
 

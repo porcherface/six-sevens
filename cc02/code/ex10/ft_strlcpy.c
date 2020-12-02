@@ -22,5 +22,7 @@ unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 	}
 	if (src[it] == '\0' && it < (size - 1))
 		dest[it] = src[it];
+	if (it == size - 1)
+		dest[it] = '\0';
 	return (it);
 }
