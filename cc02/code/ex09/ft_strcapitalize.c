@@ -46,7 +46,7 @@ char	*ft_strcapitalize(char *str)
 				str[it] = go_upcase9(str[it]);
 			}
 		}
-		if (str[it] == ' ' || str[it] == '.' || str[it] == '\n')
+		if (!check_alpha9(str[it]) && !check_num9(str[it]))
 		{
 			is_first = 1;
 		}

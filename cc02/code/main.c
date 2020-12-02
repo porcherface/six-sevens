@@ -127,7 +127,7 @@ int main()
 	write(1,"\n07\n", 4);
 
 
-	char bastemmion[30]= "porco dio\n42cod dio\nco co dio\n";
+	char bastemmion[30]= "p0rco!dio\n42cod dio\nco co dio\n";
 	char tabbon[3] = "a\tb";
 	write(1, ft_strupcase(destp), 6);
 	write(1, ft_strlowcase(destp), 6);
@@ -140,6 +140,8 @@ int main()
 
 	write(1,"\n12\n", 4);
 	ft_print_memory(bastemmion, 1);
+
+	ft_print_memory(bastemmion, 2);
 
 
 

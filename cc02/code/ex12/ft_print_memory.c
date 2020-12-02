@@ -26,7 +26,7 @@ void	print_hex(char *digits, int print_zeros, int size)
 				write(1, &digits[it], 1);
 			else
 			{
-				c = digits[it] - '9' + 'a';
+				c = digits[it] - '9' + 'a' - 1;
 				write(1, &c, 1);
 			}
 		}
@@ -53,7 +53,6 @@ void	print_addr(void *addr)
 		addrint /= 16;
 	}
 	print_hex(digits, 1, 16);
-	write(1, " ", 1);
 }
 
 void	print_content(void *addr)
