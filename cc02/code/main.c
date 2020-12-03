@@ -55,6 +55,20 @@ int main()
 	{
 		write(1, "fail\n", 5);
 	}
+	lc2 = ft_strlcpy(dest, "bella",2);
+
+
+	if(lc2 == 2)
+	{
+		write(1, "OK\n", 3);
+	}
+	else
+	{
+		write(1, "fail\n", 5);
+		return 0;
+	}
+
+
 	lc2 = ft_strlcpy(dest, "bella",5);
 	if(lc2 == 4)
 	{
