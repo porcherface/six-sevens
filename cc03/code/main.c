@@ -174,7 +174,7 @@ int main()
 	app[4] = '\0';
 	write(1, "ft_strlcat \n ",12);		
 		
-	if (9 == ft_strlcat(catty, app,1))
+	if (8 == ft_strlcat(catty, app, 2))
 	{
 		write(1, "  [ OK ]\n",9);
 	}
@@ -182,7 +182,7 @@ int main()
 	{
 		write(1, "  [FAIL]\n",9);	
 	}
-	if (0 == ft_strcmp(catty,"aaaaaaaab"))
+	if (0 == ft_strncmp(catty,"aaaaaaaab",9))
 	{
 		write(1, "  [ OK ]\n",9);
 	}
