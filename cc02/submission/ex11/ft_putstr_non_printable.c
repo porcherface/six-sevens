@@ -38,7 +38,6 @@ void	put_specials(unsigned int nonprinto)
 		c = nonprinto - 10 + 'a';
 	write(1, &c, 1);
 }
-
 void	ft_putstr_non_printable(char *str)
 {
 	int		it;

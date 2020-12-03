@@ -12,16 +12,15 @@
 
 #include <unistd.h>
 
-void	print_hex(unsigned char *digits, int print_zeros, int size)
+int	print_hex(unsigned char *digits, int print_zeros, int size)
 {
 	int		it;
 	unsigned char	c;
 
 	if (size == 0)
 	{
-		write(1, "  ", 2);
+		return (1);
 	}
-
 	it = 0;
 	while (it < size)
 	{
@@ -39,6 +38,7 @@ void	print_hex(unsigned char *digits, int print_zeros, int size)
 			write(1, "0", 1);
 		it++;
 	}
+	return (0);
 }
 
 void	print_addr(void *addr)
@@ -62,30 +62,32 @@ void	print_addr(void *addr)
 
 void	print_content(void *addr)
 {
-	int		it;
+	int		it[2];
 	unsigned char	digits[2];
 	unsigned int	num;
 
-	it = 0;
-	while (it < 16)
+	it[0] = 0;
+	it[1] = 0;
+	while (it[0] < 16)
 	{
-		num = (*(unsigned long int *)(addr + it));
+		num = (*(unsigned long int *)(addr + it[0]));
 		digits[0] = ((num / 16) % 16) + '0';
 		digits[1] = (num % 16) + '0';
-		print_hex(digits, 0, 2*( digits[0]!= '0')*(digits[1]!= '0'));
-		if (it % 2 == 1)
+		it[1] += print_hex(digits, 1, 2*((digits[0] != '0') || (digits[1] != '0')));
+		if (it[1] % 2 == 1)
 			write(1, " ", 1);
-		it++;
+		it[0]++;
 	}
-	it = 0;
-	while (it < 16)
+	write(1, "                ", 2 * it[1]);
+	it[0] = 0;
+	while (it[0] < 16)
 	{
-		digits[0] = *(unsigned char*)(addr + it);
+		digits[0] = *(unsigned char*)(addr + it[0]);
 		if (digits[0] >= 0x20 && digits[0] < 0x7f)
 			write(1, digits, 1);
 		else
 			write(1, ".", 1*(digits[0]) != 0);
-		it++;
+		it[0]++;
 	}
 }
 
