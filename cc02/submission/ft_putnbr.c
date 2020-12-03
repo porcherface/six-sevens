@@ -1,0 +1,55 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amazzei <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/11/26 15:58:14 by amazzei           #+#    #+#             */
+/*   Updated: 2020/11/27 14:20:00 by amazzei          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <unistd.h>
+
+void	print_it(char *digits)
+{
+	int it;
+
+	it = 0;
+	while (it < 20)
+	{
+		if (digits[it] != 'z')
+		{
+			write(1, &digits[it], 1);
+		}
+		it++;
+	}
+}
+
+void	ft_putnbr(int nb)
+{
+	char	digits[20];
+	int		it;
+	
+	it = 0;
+	while (it < 20)
+	{
+		digits[it] = 'z';
+		it++;
+	}
+	write(1, "-", 1 * (nb < 0));
+	nb = nb * (nb < 0) * -1 + nb * (nb >= 0);
+	it = 19;
+	if (nb == 0)
+	{
+		write(1, "0", 1);
+	}
+	while (nb > 0)
+	{
+		digits[it] = (nb % 10) + '0';
+		nb /= 10;
+		it--;
+	}
+	print_it(digits);
+}
