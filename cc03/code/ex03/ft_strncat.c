@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-char *ft_strncat(char *dest, char *src, unsigned int nb)
+char	*ft_strncat(char *dest, char *src, unsigned int nb)
 {
 	unsigned int it1;
 	unsigned int it2;
@@ -19,12 +19,11 @@ char *ft_strncat(char *dest, char *src, unsigned int nb)
 	it2 = 0;
 	while (dest[it1] != '\0')
 		it1++;
-
-	while ((src[it2] != '\0' )&& (it2 < nb ))
+	while ((src[it2] != '\0') && (it2 < nb))
 	{
 		dest[it1 + it2] = src[it2];
 		it2++;
 	}
 	dest[it1 + it2] = '\0';
-	return dest;
+	return (dest);
 }

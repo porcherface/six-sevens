@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-char *ft_strcat(char *dest, char *src)
+char	*ft_strcat(char *dest, char *src)
 {
 	int it1;
 	int it2;
@@ -19,11 +19,10 @@ char *ft_strcat(char *dest, char *src)
 	it2 = 0;
 	while (dest[it1] != '\0')
 		it1++;
-
-	while(src[it2] != '\0')
+	while (src[it2] != '\0')
 	{
 		dest[it1 + it2] = src[it2];
 		it2++;
 	}
-	return dest;
+	return (dest);
 }
