@@ -19,8 +19,20 @@ int	check_num3(char c)
 
 int digits_to_number(unsigned int digits[], unsigned int numdigits)
 {
+	int nb;
+	int it;
+	int multi;
 
-	return 0;
+	it = numdigits-1;
+	nb = 0;
+	multi = 1;
+	while(it+1)
+	{
+		nb += digits[it] * multi;
+		multi *= 10;
+		it--;
+	}
+	return nb;
 }
 int ft_atoi(char *str)
 {
@@ -45,5 +57,5 @@ int ft_atoi(char *str)
 		}
 		it++;
 	}	
-	return (digits_to_number(digits, it2));
+	return (multi * digits_to_number(digits, it2));
 }
