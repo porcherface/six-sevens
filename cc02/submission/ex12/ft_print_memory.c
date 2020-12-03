@@ -16,18 +16,12 @@ void	print_hex(unsigned char *digits, int print_zeros, int size)
 {
 	int		it;
 	unsigned char	c;
-	int 		not_zero;
 
-	not_zero = 0;
-	it = 0;
-	while (it < size)
+	if (size == 0)
 	{
-		if( digits[it] != "0")
-			not_zero = 1;
+		write(1, "  ", 2);
 	}
 
-	if( 0 == print_zeros && not_zero)
-		write("    ");
 	it = 0;
 	while (it < size)
 	{
@@ -78,7 +72,7 @@ void	print_content(void *addr)
 		num = (*(unsigned long int *)(addr + it));
 		digits[0] = ((num / 16) % 16) + '0';
 		digits[1] = (num % 16) + '0';
-		print_hex(digits, 0, 2);
+		print_hex(digits, 0, 2*( digits[0]!= '0')*(digits[1]!= '0'));
 		if (it % 2 == 1)
 			write(1, " ", 1);
 		it++;

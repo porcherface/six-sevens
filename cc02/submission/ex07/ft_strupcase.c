@@ -1,34 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_printable.c                              :+:      :+:    :+:   */
+/*   ft_strupcase.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amazzei <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/01 12:29:41 by amazzei           #+#    #+#             */
-/*   Updated: 2020/12/01 12:30:07 by amazzei          ###   ########.fr       */
+/*   Created: 2020/12/01 12:30:30 by amazzei           #+#    #+#             */
+/*   Updated: 2020/12/01 12:30:44 by amazzei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	check_print6(unsigned char c)
+int		check_alphal7(char c)
 {
-	if (c >= 0x20 && c < 0x7f)
+	if (c >= 'a' && c <= 'z')
 		return (1);
 	return (0);
 }
 
-int	ft_str_is_printable(char *str)
+char	go_upcase7(char c)
+{
+	return (c - 0x20);
+}
+
+char	*ft_strupcase(char *str)
 {
 	int it;
 
 	it = 0;
 	while (str[it] != '\0')
 	{
-		if (!check_print6((unsigned char)str[it]))
+		if (check_alphal7(str[it]))
 		{
-			return (0);
+			str[it] = go_upcase7(str[it]);
 		}
 		it++;
 	}
-	return (1);
+	return (str);
 }

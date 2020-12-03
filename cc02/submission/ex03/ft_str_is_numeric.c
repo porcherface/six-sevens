@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_printable.c                              :+:      :+:    :+:   */
+/*   ft_str_is_numeric.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amazzei <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/01 12:29:41 by amazzei           #+#    #+#             */
-/*   Updated: 2020/12/01 12:30:07 by amazzei          ###   ########.fr       */
+/*   Created: 2020/12/01 12:24:47 by amazzei           #+#    #+#             */
+/*   Updated: 2020/12/01 12:25:27 by amazzei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	check_print6(unsigned char c)
+int	check_num3(char c)
 {
-	if (c >= 0x20 && c < 0x7f)
+	if (c >= '0' && c <= '9')
 		return (1);
 	return (0);
 }
 
-int	ft_str_is_printable(char *str)
+int	ft_str_is_numeric(char *str)
 {
 	int it;
 
 	it = 0;
 	while (str[it] != '\0')
 	{
-		if (!check_print6((unsigned char)str[it]))
+		if (!check_num3(str[it]))
 		{
 			return (0);
 		}

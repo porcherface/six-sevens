@@ -1,34 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_printable.c                              :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amazzei <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/01 12:29:41 by amazzei           #+#    #+#             */
-/*   Updated: 2020/12/01 12:30:07 by amazzei          ###   ########.fr       */
+/*   Created: 2020/12/01 12:01:55 by amazzei           #+#    #+#             */
+/*   Updated: 2020/12/01 12:04:49 by amazzei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	check_print6(unsigned char c)
-{
-	if (c >= 0x20 && c < 0x7f)
-		return (1);
-	return (0);
-}
-
-int	ft_str_is_printable(char *str)
+char	*ft_strcpy(char *dest, char *src)
 {
 	int it;
 
 	it = 0;
-	while (str[it] != '\0')
+	while (src[it] != '\0')
 	{
-		if (!check_print6((unsigned char)str[it]))
-		{
-			return (0);
-		}
+		dest[it] = src[it];
 		it++;
 	}
-	return (1);
+	if (src[it] == '\0')
+		dest[it] = src[it];
+	return (dest);
 }
