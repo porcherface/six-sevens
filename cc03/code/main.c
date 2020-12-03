@@ -122,7 +122,7 @@ int main()
 		it++;
 	}
 	write(1, "ft_strncat \n ",12);
-	if (!ft_strcmp(ft_strncat(catty, app,3),"aaaaaaaabbb"))
+	if (!ft_strncmp(ft_strncat(catty, app,3),"aaaaaaaabbb", 11))
 	{
 		write(1, "  [ OK ]\n",9);
 	}
@@ -130,7 +130,7 @@ int main()
 	{
 		write(1, "  [FAIL]\n",9);	
 	}
-	if (!ft_strcmp(ft_strncat(catty, app,1),"aaaaaaaabbbb"))
+	if (!ft_strncmp(ft_strncat(catty, app,1),"aaaaaaaabbbb", 11))
 	{
 		write(1, "  [ OK ]\n",9);
 	}

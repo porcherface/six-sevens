@@ -47,7 +47,7 @@ int main()
 	lc2 = ft_strlcpy(dest, "bella",8);
 
 
-	if(lc2 == 5)
+	if(lc2 == 6)
 	{
 		write(1, "OK\n", 3);
 	}
@@ -65,7 +65,7 @@ int main()
 	else
 	{
 		write(1, "fail\n", 5);
-		return 0;
+		//return 0;
 	}
 
 
@@ -162,7 +162,7 @@ int main()
 	write(1,"\n07\n", 4);
 
 
-	char bastemmion[32]= "p0rco!meo\n42cod sio\nco 77co aio\n";
+	char bastemmion[64]= "p0rco!meo\n42cod sio\nco 77co aio\n\0";
 	char tabbon[128] = "a\tb ...>\0\0\0\0<...   52395 23jf£%99£=£KJFQ£D=)Q£=DI)||\\\n\n\n\en\e8\e\n\ee\e8\\ff\fff\fff\0xff\0";
 	char cazzo[16 * 12] = "aaaaaaaaaaaaaaabaaaaaaaaaaaaaaaaaaaaaaa\0\0\0\0aaaaaaaaaa\0aaaa\0aaaaaaaaaa\0aaaa\0aaaaaaaaaa\0aaaa\0aaaaaaaaaa\0aaaa\0aaaaaaaaaa\0aaaa\0aaaaaaaaaa\0aaaa\0aaaaaaa\0\0\0aaaaaa\0\0\0aaaa\0\0\0aaaaaa\0\0\0aaaa\0\0\0aaaaaa\0\0\0aa";		
 

@@ -148,7 +148,7 @@ int main()
 	write(1,"\n07\n", 4);
 
 
-	char bastemmion[32]= "p0rco!meo\n42cod sio\nco 77co aio\n";
+	char bastemmion[64]= "p0rco!meo\n42cod sio\nco 77co aio\n";
 	char tabbon[128] = "a\tb\n\n\n \0\0\0\0<...   52395 23jf£%99£=£KJFQ£D=)Q£=DI)||\\\n\n\n\en\e8\e\n\ee\e8\\ff\fff\fff\0xff\0";
 	write(1, ft_strupcase(destp), 6);
 	write(1, ft_strlowcase(destp), 6);
