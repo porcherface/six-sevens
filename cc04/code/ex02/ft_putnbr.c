@@ -12,53 +12,51 @@
 
 #include <unistd.h>
 
-void	init_digits(char *digits)
+int	set_base_re(char *b)
 {
-	int it;
+	int 	it;
 
 	it = 0;
-	while (it < 20)
+	while (it < 10)
 	{
-		digits[it] = 'z';
+		b[it] = '0' + it;
 		it++;
 	}
+	return (10);
 }
 
-void	print_it(char *digits)
+void	print_it_base_re(int d[], int s, char *base)
 {
-	int it;
+	char c;
 
-	it = 0;
-	while (it < 20)
-	{
-		if (digits[it] != 'z')
-		{
-			write(1, &digits[it], 1);
-		}
-		it++;
+	s -= 1;
+	while(s >= 0)
+	{	
+		c = base[d[s] * (d[s] < 0) * -1 + d[s] * (d[s] >= 0)];
+		write(1, &c, 1);
+		s--;
 	}
 }
 
 void	ft_putnbr(int nb)
 {
-	char	digits[20];
-	int		it;
+	int	digits[20];
+	int	base_num;
+	int 	it;
+	char	base[11];
 
-	init_digits(digits);
+	base_num = set_base_re(base);
+	if(base_num < 2)
+	{
+		return ;
+	}
 	write(1, "-", 1 * (nb < 0));
-	nb = nb * (nb < 0) * -1 + nb * (nb >= 0);
-	it = 19;
-	if (nb == 0)
+	it = 0;
+	while (nb != 0)
 	{
-		write(1, "0", 1);
+		digits[it] = nb % base_num;
+		nb = (nb - digits[it]) / base_num;
+		it++;
 	}
-	while (nb > 0)
-	{
-		digits[it] = (nb % 10) + '0';
-		nb /= 10;
-		it--;
-	}
-	print_it(digits);
-	return ;
+	print_it_base_re(digits, it, base);
 }
-
