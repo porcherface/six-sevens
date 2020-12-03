@@ -10,7 +10,7 @@ char *ft_strcat(char *dest, char *src)
 
 	while(src[it2] != '\0')
 	{
-		dest[it1+it2] = src[it2];
+		dest[it1 + it2] = src[it2];
 		it2++;
 	}
 	return dest;
