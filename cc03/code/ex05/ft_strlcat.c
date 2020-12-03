@@ -17,5 +17,5 @@ unsigned int ft_strlcat(char *dest, char *src, unsigned int size)
 	{
 		return (it1 + it2+1);
 	}
-	return (it1 + it2 - 1);
+	return (it1 + it2);
 }
