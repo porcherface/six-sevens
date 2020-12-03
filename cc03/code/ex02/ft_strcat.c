@@ -12,8 +12,8 @@
 
 char	*ft_strcat(char *dest, char *src)
 {
-	int it1;
-	int it2;
+	unsigned int it1;
+	unsigned int it2;
 
 	it1 = 0;
 	it2 = 0;
@@ -24,5 +24,6 @@ char	*ft_strcat(char *dest, char *src)
 		dest[it1 + it2] = src[it2];
 		it2++;
 	}
+	dest[it1 + it2] = src[it2];
 	return (dest);
 }

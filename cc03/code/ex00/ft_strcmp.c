@@ -12,7 +12,7 @@
 
 int		ft_strcmp(char *s1, char *s2)
 {
-	int it;
+	unsigned int it;
 
 	it = 0;
 	while (s1[it] != '\0' && s2[it] != '\0')
@@ -27,5 +27,9 @@ int		ft_strcmp(char *s1, char *s2)
 				return (-1);
 		}
 	}
+	if (s1[it] > s2[it])
+		return (1);
+	if (s1[it] < s2[it])
+		return (-1);
 	return (0);
 }

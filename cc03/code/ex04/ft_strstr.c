@@ -24,11 +24,11 @@ char	*ft_strstr(char *str, char *to_find)
 			jt++;
 			if (to_find[jt] == '\0')
 			{
-				return (str + it + jt);
+				return (str + it);
 			}
 		}
 		jt = 0;
 		it++;
 	}
-	return ((char *)0);
+	return ((char *)0x0000);
 }
