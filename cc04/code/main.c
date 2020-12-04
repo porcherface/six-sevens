@@ -4,40 +4,46 @@ int  ft_strlen(char *str);
 int  ft_atoi(char *str);
 void ft_putnbr(int nb);
 void ft_putnbr_base(int nbr, char *base);
-int  ft_atoi(char *str);
-int ft_atoi_base(char *str, char *base);
+void ft_putstr(char *str);
+//int ft_atoi_base(char *str, char *base);
 
 int main()
 {
-	write(1, "ft_strlen\n",10);
+	ft_putstr("using ft_putstr for stdout\n");
+	ft_putstr("ft_strlen\n");
 	if (5 == ft_strlen("bella"))
 	{
-		write(1, "  [ OK ]\n",9);
+		ft_putstr("  [ OK ]\n");
 	}
 	else
 	{
-		write(1, "  [FAIL]\n",9);	
+		ft_putstr("  [FAIL]\n");	
 	}
 	if (5 == ft_strlen("bella\0aaaaaaaaaa"))
 	{
-		write(1, "  [ OK ]\n",9);
+		ft_putstr("  [ OK ]\n");
 	}
 	else
 	{
-		write(1, "  [FAIL]\n",9);	
+		ft_putstr("  [FAIL]\n");	
 	}
 	if (6 == ft_strlen("bella\n\0aaaaaaaaaa"))
 	{
-		write(1, "  [ OK ]\n",9);
+		ft_putstr("  [ OK ]\n");
 	}
 	else
 	{
-		write(1, "  [FAIL]\n",9);	
+		ft_putstr("  [FAIL]\n");	
 	}
-
-
-
-	write(1, "ft_atoi\n",8);
+	if (0 == ft_strlen("\0bella\n\0aaaaaaaaaa"))
+	{
+		ft_putstr("  [ OK ]\n");
+	}
+	else
+	{
+		ft_putstr("  [FAIL]\n");	
+	}
+	ft_putstr("ft_atoi\n");
 
 	/*ft_putnbr(666);
 	write(1, "\n", 1);
@@ -46,35 +52,109 @@ int main()
 	*/
 	if (42 == ft_atoi("42"))
 	{
-		write(1, "  [ OK ]\n",9);
+		ft_putstr("  [ OK ]\n");
 	}
 	else
 	{
-		write(1, "  [FAIL]\n",9);	
+		ft_putstr("  [FAIL]\n");	
 	}
 	if (-42 == ft_atoi("---42"))
 	{
-		write(1, "  [ OK ]\n",9);
+		ft_putstr("  [ OK ]\n");
+	}
+	if (-42 == ft_atoi("---++++++++++++++++++42!42"))
+	{
+		ft_putstr("  [ OK ]\n");
 	}
 	else
 	{
-		write(1, "  [FAIL]\n",9);	
+		ft_putstr("  [FAIL]\n");	
+	
 	}
 	if (2147483647 == ft_atoi("2147483647"))
 	{
-		write(1, "  [ OK ]\n",9);
+		ft_putstr("  [ OK ]\n");
 	}
 	else
 	{
-		write(1, "  [FAIL]\n",9);	
+		ft_putstr("  [FAIL]\n");	
 	}
-	if (-2147483648 == ft_atoi("--+-       2147483648"))
+
+	if (0 == ft_atoi("--+-       a2147483648aaaaaa4446s"))
 	{
-		write(1, "  [ OK ]\n",9);
+		ft_putstr("  [ OK ]\n");
 	}
 	else
 	{
-		write(1, "  [FAIL]\n",9);	
+		ft_putstr("  [FAIL]\n");	
 	}
+	if (0 == ft_atoi("--+-00000000000000000000000000000000000000000"))
+	{
+		ft_putstr("  [ OK ]\n");
+	}
+	else
+	{
+		ft_putstr("  [FAIL]\n");	
+	}
+	if (-1 == ft_atoi("--+-00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001"))
+	{
+		ft_putstr("  [ OK ]\n");
+	}
+	else
+	{
+		ft_putstr("  [FAIL]\n");	
+	}
+	if (-2147483648 == ft_atoi("--+-2147483648"))
+	{
+		ft_putstr("  [ OK ]\n");
+	}
+	else
+	{
+		ft_putstr("  [FAIL]\n");	
+	}
+	if (-2147483648 == ft_atoi("--+-       2147483648aaaaaa4446s"))
+	{
+		ft_putstr("  [ OK ]\n");
+	}
+	else
+	{
+		ft_putstr("  [FAIL]\n");	
+	}
+	if (-2147483648 == ft_atoi("--+-   \n\t 2147483648aaaaaa4446s"))
+	{
+		ft_putstr("  [ OK ]\n");
+	}
+	else
+	{
+		ft_putstr("  [FAIL]\n");	
+	}
+	ft_putstr("ft_putnbr\n");
+	write(1, "  ", 2);
+ 	ft_putnbr(666);
+ 	write(1, "\n  ", 3);
+ 	ft_putnbr(-2147483648);
+ 	write(1, "\n", 1);
+
+	ft_putstr("ft_putnbr_base\n  ");
+ 	ft_putnbr_base(666, "0123456789");
+ 	write(1, "\n  ", 3);
+ 	ft_putnbr_base(1234567890, "qwertyuiop");
+ 	write(1, "\n  ", 3);
+ 	ft_putnbr_base(1234567890, "a");
+ 	write(1, "\n  ", 3);
+  	ft_putnbr_base(1234567890, "abcdefa");
+ 	write(1, "\n  ", 3);
+  	ft_putnbr_base(1234567890, "abcdef-");
+ 	write(1, "\n  ", 3);
+ 	ft_putnbr_base(-7, "01");
+ 	write(1, "\n  ", 3);
+ 	ft_putnbr_base(2147483647, "0123456789");
+	write(1, "\n  ", 3);
+ 	ft_putnbr_base(-2147483648, "0123456789");
+	write(1, "\n  ", 3);
+ 	ft_putnbr_base(65535, "0123456789abcdef");
+	
+
+	write(1, "\n", 1);
 
 }
