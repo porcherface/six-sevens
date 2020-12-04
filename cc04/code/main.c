@@ -5,7 +5,7 @@ int  ft_atoi(char *str);
 void ft_putnbr(int nb);
 void ft_putnbr_base(int nbr, char *base);
 void ft_putstr(char *str);
-//int ft_atoi_base(char *str, char *base);
+int ft_atoi_base(char *str, char *base);
 
 int main()
 {
@@ -61,6 +61,10 @@ int main()
 	if (-42 == ft_atoi("---42"))
 	{
 		ft_putstr("  [ OK ]\n");
+	}
+	else
+	{		
+		ft_putstr("  [FAIL]\n");	
 	}
 	if (-42 == ft_atoi("---++++++++++++++++++42!42"))
 	{
@@ -156,5 +160,134 @@ int main()
 	
 
 	write(1, "\n", 1);
+	ft_putstr("ft_atoi_base\n");
 
+	/*ft_putnbr(666);
+	write(1, "\n", 1);
+	ft_putnbr(ft_atoi("666"));
+	write(1, "\n", 1);
+	*/	
+	if (0 == ft_atoi_base("--+-00000000000000000000000000000000000000000", "aaa"))
+	{
+		ft_putstr("  [ OK ]\n");
+	}
+	else
+	{
+		ft_putstr("  [FAIL]\n");	
+	}
+	if (42 == ft_atoi_base("42", "0123456789"))
+	{
+		ft_putstr("  [ OK ]\n");
+	}
+	else
+	{
+		ft_putstr("  [FAIL]\n");	
+	}
+	if (42 == ft_atoi_base("!?", "01?3!56789"))
+	{
+		ft_putstr("  [ OK ]\n");
+	}
+	else
+	{
+		ft_putstr("  [FAIL]\n");	
+	}
+	if (420 == ft_atoi_base("!?0", "01?3!56789"))
+	{
+		ft_putstr("  [ OK ]\n");
+	}
+	else
+	{
+		ft_putstr("  [FAIL]\n");	
+	}
+	if (-42 == ft_atoi_base("---24","0143256789"))
+	{
+		ft_putstr("  [ OK ]\n");
+	}	
+	else
+	{
+		ft_putstr("  [FAIL]\n");	
+	
+	}
+	if (-42 == ft_atoi_base("---++++++++++++++++++42!42","0123456789"))
+	{
+		ft_putstr("  [ OK ]\n");
+	}
+	else
+	{
+		ft_putstr("  [FAIL]\n");	
+	
+	}
+	if (2147483647 == ft_atoi_base("2147483647","0123456789"))
+	{
+		ft_putstr("  [ OK ]\n");
+	}
+	else
+	{
+		ft_putstr("  [FAIL]\n");	
+	}
+
+	if (-1 == ft_atoi_base("--+-       b2147483648aaaaaa4446s","abc"))
+	{
+		ft_putstr("  [ OK ]\n");
+	}
+	else
+	{
+		ft_putstr("  [FAIL]\n");	
+	}
+	if (0 == ft_atoi_base("--+-       a2147483648aaaaaa4446s","abc"))
+	{
+		ft_putstr("  [ OK ]\n");
+	}
+	else
+	{
+		ft_putstr("  [FAIL]\n");	
+	}
+	if (-1 == ft_atoi_base("--+-00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001","01"))
+	{
+		ft_putstr("  [ OK ]\n");
+	}
+	else
+	{
+		ft_putstr("  [FAIL]\n");	
+	}
+	if (-2 == ft_atoi_base("--+-0000000000000000000000000000000000000000000000000000000000000000000010","01"))
+	{
+		ft_putstr("  [ OK ]\n");
+	}
+	else
+	{
+		ft_putstr("  [FAIL]\n");	
+	}
+	if (-2147483648 == ft_atoi_base("--+-2147483648","0123456789"))
+	{
+		ft_putstr("  [ OK ]\n");
+	}
+	else
+	{
+		ft_putstr("  [FAIL]\n");	
+	}
+	if (-2147483648 == ft_atoi_base("--+-       2147483648aaaaaa4446s","0123456789"))
+	{
+		ft_putstr("  [ OK ]\n");
+	}
+	else
+	{
+		ft_putstr("  [FAIL]\n");	
+	}
+	if (-0xffff == ft_atoi_base("--+-       ffffgaaaaaa4446s","0143256789abcdef"))
+	{
+		ft_putstr("  [ OK ]\n");
+	}
+	else
+	{
+		ft_putstr("  [FAIL]\n");	
+	}
+	if (-0xfff == ft_atoi_base("--+-       fff-fgaaaaaa4446s","0143256789abcdef"))
+	{
+		ft_putstr("  [ OK ]\n");
+	}
+	else
+	{
+		ft_putstr("  [FAIL]\n");	
+	}
 }
