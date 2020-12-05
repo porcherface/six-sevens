@@ -82,12 +82,12 @@ int check_rules(int rules[], int size, int board[], int hero)
 	write(1, "col:",4); write(1, &c, 1);  write(1, "\n", 1);
 
 	it = 0;
-  	while (it < 16)
+  	while (it < size*size)
 	{
 		c = board[it] + '0';
 		write(1, &c, 1);
 			
-		if (it % 4 == 3)
+		if (it % size == size - 1)
 			write(1, "\n", 1);
 		else
 			write(1, " ", 1);
@@ -112,18 +112,6 @@ int check_rules(int rules[], int size, int board[], int hero)
 		it++;
 	}
  	
-  	write(1, "rules:",6);
- 	c = rulvalues[0] + '0';
- 	write(1, &c, 1);
-	c = rulvalues[1] + '0';
- 	write(1, &c, 1);
-	c = rulvalues[2] + '0';
- 	write(1, &c, 1);
-	c = rulvalues[3] + '0';
- 	write(1, &c, 1);
-	write(1, "\n", 1);
-
-
 	int counter = 0;
 	int max = 0;
 	it = 0;
@@ -137,9 +125,9 @@ int check_rules(int rules[], int size, int board[], int hero)
 		}
 		if (!board[hero_col + size * it])
 			flag = (1);
-		if (!board[it + size * hero_row])
+		/*if (!board[it + size * hero_row])
 			flag=  (1);
-		
+		*/
 		it++;
 	}
 	if(counter != rulvalues[0] && !flag)
@@ -148,7 +136,28 @@ int check_rules(int rules[], int size, int board[], int hero)
 		return (0);
 	}
 
+	counter = 0;
+	max = 0;
+	it = size - 1;
+	flag = 0;
+	while (it >= 0)
+	{
+		if (board[hero_col + size * it] > max)
+		{
+			max = board[hero_col + size * it];
+			counter++;
+		}
+		if (!board[hero_col + size * it])
+			flag = (1);
+		
+		it--;
+	}
 
+	if(counter != rulvalues[1] && !flag)
+	{
+		write(1, "notplace1\n", 10);
+		return (0);
+	}
 
 	counter = 0;
 	max = 0;
@@ -161,8 +170,7 @@ int check_rules(int rules[], int size, int board[], int hero)
 			max = board[it + size * hero_row];
 			counter++;
 		}
-		if (!board[hero_col + size * it])
-			flag=  (1);
+
 		if (!board[it + size * hero_row])
 			flag=  (1);
 		
@@ -175,7 +183,28 @@ int check_rules(int rules[], int size, int board[], int hero)
 		return (0);
 	}
 
+	counter = 0;
+	max = 0;
+	it = size - 1;
+	flag = 0;
+	while (it >= 0)
+	{
+		if (board[it + size * hero_row] > max)
+		{
+			max = board[it + size * hero_row];
+			counter++;
+		}
+ 
+		if (!board[it + size * hero_row])
+			flag=  (1);
+		it--;
+	}
 
+	if(counter != rulvalues[3] && !flag)
+	{
+		write(1, "notplace3\n", 10);
+		return (0);
+	}
 
  	write(1, "canplace\n", 9);
 
@@ -217,11 +246,12 @@ int tree_search(int rules[], int size, int *board, int copy[], int placed )
 	}
 	/* we see the board and choose the hero*/
 	hero = choose_hero(copy, size);
- 	while (it < 16)
+  	while (it < size*size)
 	{
-		c = copy[it] + '0';
+		c = board[it] + '0';
 		write(1, &c, 1);
-		if (it % 4 == 3)
+			
+		if (it % size == size - 1)
 			write(1, "\n", 1);
 		else
 			write(1, " ", 1);
@@ -235,7 +265,7 @@ int tree_search(int rules[], int size, int *board, int copy[], int placed )
 		write(1, "heroval:" ,8);
 		c = copy[hero] +'0';
 		write(1, &c, 1);
-	    write(1, "\n", 1);
+	        write(1, "\n", 1);
 
 		if (check_rules(rules, size, copy, hero))
 		{	
@@ -247,7 +277,7 @@ int tree_search(int rules[], int size, int *board, int copy[], int placed )
 		}
 		it++;
 	}
- 
+ 	copy[hero] = 0;
 
 
 	/* if we found something the algorithm converged!*/

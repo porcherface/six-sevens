@@ -52,92 +52,113 @@ int check_rules(int rules[], int size, int board[], int hero)
 	int hero_row; 
 	int hero_col;
 	int it;
+	int rulvalues[4];
+	int counter = 0;
+	int max = 0;
+	int flag = 0;
 
+	rulvalues[0] = rules[hero % size + size * 0];
+	rulvalues[1] = rules[hero % size + size * 1];
+	rulvalues[2] = rules[hero / size + size * 0];
+	rulvalues[3] = rules[hero / size + size * 1];
 	hero_col = hero % size;
 	hero_row = hero / size;
-
-	//int sumcol = 0;
-	//int sumrow = 0;
-
-	it = 0;
+	it = 0;  
 	while (it < size)
 	{
-		if ((board[hero_col + size * it] == board[hero]) && ((hero_col + size * it)!= hero))
- 			return (0);
-		if ((board[it + size * hero_row] == board[hero]) && ((it + size * hero_row)!= hero))
+		if ((board[hero_col + size * it] == board[hero]) && ((hero_col + size * it)!= hero) )
+		{
 			return (0);
+		}
+		if ((board[it + size * hero_row] == board[hero]) && ((it + size * hero_row)!= hero))
+		{
+			return (0);
+ 		}
 		it++;
 	}
-	
-	int r1 = hero % size + size * 0;
+ 	
+
 	it = 0;
-	int count = 0;
-	int max = 0;
 	while (it < size)
 	{
 		if (board[hero_col + size * it] > max)
 		{
 			max = board[hero_col + size * it];
-			count++;
-		} 
+			counter++;
+		}
+		if (!board[hero_col + size * it])
+			flag = (1);
 		it++;
 	}
-	if(count > rules[r1])
+	if(counter != rulvalues[0] && !flag)
 	{
 		return (0);
 	}
-	int r2 = hero % size + size * 1;
-	it = size-1;
-	count = 0;
-	while (it >=0)
+	counter = 0;
+	max = 0;
+	it = size - 1;
+	flag = 0;
+	while (it >= 0)
 	{
 		if (board[hero_col + size * it] > max)
 		{
 			max = board[hero_col + size * it];
-			count++;
-		} 
+			counter++;
+		}
+		if (!board[hero_col + size * it])
+			flag = (1);
 		it--;
 	}
-	if(count > rules[r2])
+	if(counter != rulvalues[1] && !flag)
 	{
 		return (0);
-	}	
-
-	int r3 = hero % size + size * 2;
+	}
+	counter = 0;
+	max = 0;
 	it = 0;
-	count = 0;
+	flag = 0;
 	while (it < size)
 	{
 		if (board[it + size * hero_row] > max)
 		{
 			max = board[it + size * hero_row];
-			count++;
-		} 
+			counter++;
+		}
+
+		if (!board[it + size * hero_row])
+			flag=  (1);
+		
 		it++;
 	}
-	if(count > rules[r3])
+
+	if(counter != rulvalues[2] && !flag)
 	{
 		return (0);
 	}
-	int r4 = hero % size + size * 3;
-	it = size-1;
-	count = 0;
-	while (it >=0)
+	counter = 0;
+	max = 0;
+	it = size - 1;
+	flag = 0;
+	while (it >= 0)
 	{
 		if (board[it + size * hero_row] > max)
 		{
 			max = board[it + size * hero_row];
-			count++;
-		} 
+			counter++;
+		}
+ 
+		if (!board[it + size * hero_row])
+			flag=  (1);
 		it--;
 	}
-	if(count > rules[r4])
+
+	if(counter != rulvalues[3] && !flag)
 	{
 		return (0);
-	}	
-
+	}
 	return (1);
 }
+
 
 int choose_hero(int board[], int size)
 {
