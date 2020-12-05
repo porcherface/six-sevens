@@ -58,6 +58,14 @@ int main()
 	{
 		ft_putstr("  [FAIL]\n");	
 	}
+	if (420 == ft_atoi("--0000000000000000420a0000000000000000"))
+	{
+		ft_putstr("  [ OK ]\n");
+	}
+	else
+	{
+		ft_putstr("  [FAIL]\n");	
+	}
 	if (-42 == ft_atoi("---42"))
 	{
 		ft_putstr("  [ OK ]\n");
@@ -66,7 +74,7 @@ int main()
 	{		
 		ft_putstr("  [FAIL]\n");	
 	}
-	if (-42 == ft_atoi("---++++++++++++++++++42!42"))
+	if (-420 == ft_atoi("---++++++++++++++++++420!42"))
 	{
 		ft_putstr("  [ OK ]\n");
 	}
@@ -132,25 +140,44 @@ int main()
 	{
 		ft_putstr("  [FAIL]\n");	
 	}
+	
 	ft_putstr("ft_putnbr\n");
 	write(1, "  ", 2);
  	ft_putnbr(666);
  	write(1, "\n  ", 3);
+	ft_putnbr(0);
+	write(1, "\n  ", 3);
+	ft_putnbr(420);
+ 	write(1, "\n  ", 3);
  	ft_putnbr(-2147483648);
- 	write(1, "\n", 1);
+	write(1, "\n  ", 3);
+	ft_putnbr(2147483647);
+ 	 write(1, "\n", 1);
 
 	ft_putstr("ft_putnbr_base\n  ");
- 	ft_putnbr_base(666, "0123456789");
+ 	ft_putnbr_base(66600, "0123456789");
  	write(1, "\n  ", 3);
  	ft_putnbr_base(1234567890, "qwertyuiop");
  	write(1, "\n  ", 3);
+
+	
+	ft_putstr("----empty now------\n  ");
  	ft_putnbr_base(1234567890, "a");
  	write(1, "\n  ", 3);
   	ft_putnbr_base(1234567890, "abcdefa");
  	write(1, "\n  ", 3);
+ 	ft_putnbr_base(-0, "0");
+	write(1, "\n  ", 3);
   	ft_putnbr_base(1234567890, "abcdef-");
  	write(1, "\n  ", 3);
+	ft_putstr("----end empty ------\n  ");
+ 	
+
  	ft_putnbr_base(-7, "01");
+  	write(1, "\n  ", 3);
+ 	ft_putnbr_base(-0, "01");
+	write(1, "\n  ", 3);
+ 	ft_putnbr_base(-0, "10");
  	write(1, "\n  ", 3);
  	ft_putnbr_base(2147483647, "0123456789");
 	write(1, "\n  ", 3);
@@ -162,11 +189,6 @@ int main()
 	write(1, "\n", 1);
 	ft_putstr("ft_atoi_base\n");
 
-	/*ft_putnbr(666);
-	write(1, "\n", 1);
-	ft_putnbr(ft_atoi("666"));
-	write(1, "\n", 1);
-	*/	
 	if (0 == ft_atoi_base("--+-00000000000000000000000000000000000000000", "aaa"))
 	{
 		ft_putstr("  [ OK ]\n");

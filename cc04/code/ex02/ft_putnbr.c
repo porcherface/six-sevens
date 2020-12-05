@@ -45,6 +45,11 @@ void	ft_putnbr(int nb)
 	int 	it;
 	char	base[11];
 
+	if(nb == 0)
+	{
+		write(1, "0", 1);
+		return ;
+	}
 	base_num = set_base_re(base);
 	if(base_num < 2)
 	{
