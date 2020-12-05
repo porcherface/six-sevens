@@ -1,11 +1,14 @@
 
+#include <stdlib.h>
+
 int rush_engine(int rules[], int size, int *board);
 
 int main()
 {
 	int size = 4;
 	int rules[4*4];
-	int *board = NULL;
+	int *board = 0x0;
+	int token;
 	if (size > 0)
 		board = (int*)malloc(size*size*sizeof(int));
 	int it=0;

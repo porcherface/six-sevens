@@ -52,11 +52,9 @@ void	print_it_base(int d[], int s, char *base)
 
 void	ft_putnbr_base(int nb, char *base)
 {
-	int	digits[20];
+	int	digits[64];
 	int	base_num;
 	int 	it;
-
-
 
 	base_num = count_base(base);
 	if(base_num < 2)

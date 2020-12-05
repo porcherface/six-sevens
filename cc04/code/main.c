@@ -184,6 +184,8 @@ int main()
  	ft_putnbr_base(-2147483648, "0123456789");
 	write(1, "\n  ", 3);
  	ft_putnbr_base(65535, "0123456789abcdef");
+	write(1, "\n  ", 3);
+ 	ft_putnbr_base(-2147483648, "?!");
 	
 
 	write(1, "\n", 1);
@@ -304,7 +306,15 @@ int main()
 	{
 		ft_putstr("  [FAIL]\n");	
 	}
-	if (-0xfff == ft_atoi_base("--+-       fff-fgaaaaaa4446s","0143256789abcdef"))
+	if (-0xfff == ft_atoi_base("--+-    fff-fgaaaaaa4446s","0143256789abcdef"))
+	{
+		ft_putstr("  [ OK ]\n");
+	}
+	else
+	{
+		ft_putstr("  [FAIL]\n");	
+	}
+	if (-2147483648 == ft_atoi_base("--+-       !???????????????????????????????aaaaa4446s","?!"))
 	{
 		ft_putstr("  [ OK ]\n");
 	}

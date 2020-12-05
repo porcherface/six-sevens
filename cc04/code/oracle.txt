@@ -1,0 +1,57 @@
+using ft_putstr for stdout
+ft_strlen
+  [ OK ]
+  [ OK ]
+  [ OK ]
+  [ OK ]
+ft_atoi
+  [ OK ]
+  [ OK ]
+  [ OK ]
+  [ OK ]
+  [ OK ]
+  [ OK ]
+  [ OK ]
+  [ OK ]
+  [ OK ]
+  [ OK ]
+  [ OK ]
+ft_putnbr
+  666
+  0
+  420
+  -2147483648
+  2147483647
+ft_putnbr_base
+  66600
+  wertyuiopq
+  ----empty now------
+  
+  
+  
+  
+  ----end empty ------
+  -111
+  0
+  0
+  2147483647
+  -2147483648
+  ffff
+  -!???????????????????????????????
+ft_atoi_base
+  [ OK ]
+  [ OK ]
+  [ OK ]
+  [ OK ]
+  [ OK ]
+  [ OK ]
+  [ OK ]
+  [ OK ]
+  [ OK ]
+  [ OK ]
+  [ OK ]
+  [ OK ]
+  [ OK ]
+  [ OK ]
+  [ OK ]
+  [ OK ]
