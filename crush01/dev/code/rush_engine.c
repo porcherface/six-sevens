@@ -10,9 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-
 int heuristic_start(int rules[], int size, int *board)
 {
 	int it;
@@ -44,9 +41,21 @@ int heuristic_start(int rules[], int size, int *board)
 		}
 		it++;
 	}
+	it = 0;
+	while (it < size * 4)
+	{
+		if (rules[it] == size)
+		{
+			
+		}
+
+	}
+
 	return (placed);
 }
-
+/*
+int check_v
+*/
 int check_rules(int rules[], int size, int board[], int hero)
 {
 	int hero_row; 
@@ -205,11 +214,11 @@ int tree_search(int rules[], int size, int *board, int copy[], int placed )
 int rush_engine(int rules[], int size, int *board)
 {
 	int placed;
-	int result;
+	int token;
 
 	placed = 0; 
-	result = 0;
+	token = 0;
 	placed += heuristic_start(rules, size, board);
-	result = tree_search(rules, size, board, board, placed);
-	return result;
+	token = tree_search(rules, size, board, board, placed);
+	return !token;
 }

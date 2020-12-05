@@ -34,8 +34,11 @@ int		print_output(int token, int board[], int size)
 		}
 	}
 
-	else
-		write (1, "Error", 5);
+	if (token < 0)
+		write (1, "Error\n", 6);
+	if (token > 0)
+		write (1, "Error\n", 6);
+
 /*   else if (token == 1)
 		write (1, "Problem is well posed but alghoritm failed/no solution.", 55);
 	else if (token == -1)

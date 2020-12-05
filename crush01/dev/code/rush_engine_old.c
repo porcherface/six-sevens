@@ -275,9 +275,10 @@ int tree_search(int rules[], int size, int *board, int copy[], int placed )
 				return (1);
 			}
 		}
+
+ 		copy[hero] = 0;
 		it++;
 	}
- 	copy[hero] = 0;
 
 
 	/* if we found something the algorithm converged!*/
@@ -299,5 +300,5 @@ int rush_engine(int rules[], int size, int *board)
 	result = tree_search(rules, size, board, board, placed);
  
 	/* hope for the best */
-	return result;
+	return !result;
 }

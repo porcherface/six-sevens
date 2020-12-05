@@ -29,12 +29,7 @@ int my_atoi(const char *input)
 	}
 	return (accumulator);
 }
-/*
-int check_size(char *input, int *size)
-{
-	 
-}
-*/
+
 
 int	check_space(char *input)
 {
@@ -53,7 +48,7 @@ int	check_space(char *input)
 		return (-2);
 }
 
-int		fn_is_numeric(char *str)
+int		ft_str_is_numeric(char *str)
 {
 	char *p_str;
 
@@ -68,7 +63,7 @@ int		fn_is_numeric(char *str)
 	return (0);
 }
 
-int	parse_input(char *input, int *rules)
+int parse_input(int argc, char **argv, int *rules, int *board)
 {
 
 	if (argc != 2)
@@ -81,4 +76,24 @@ int	parse_input(char *input, int *rules)
 	{
 		return (-1);
 	}
+
+	// get size()
+
+	if (size > 0)
+	{
+		board = (int*)malloc(size * size * sizeof(int));
+		rules = (int*)malloc(4 * size * sizeof(int));
+		// fill board with zeros
+		// fill rules with str elements
+	}
+	else
+	{
+		return (-4);
+	}
+	if (board != 0x0 && rules != 0x0)
+	{
+		return (size);
+	}
+	return (-4);
+
 }
