@@ -1,6 +1,6 @@
 
 
-int parse_input(int argc, char **argv);
+int parse_input(int argc, char **argv, int *rules);
 int rush_engine(int rules[], int size, int *board);
 int print_output(int token, int board[], int size);
 int allocate_all_memories(int *rules, int *board, int size);

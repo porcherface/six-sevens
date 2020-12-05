@@ -1,13 +1,7 @@
-
-#include <stdlib.h>
-#include <unistd.h>
-
-int rush_engine(int rules[], int size, int *board);
-
 int main()
 {
-	int size = 4;
-	int rules[4*4];
+	int size = 2;
+	int rules[2*4];
 	int *board = 0x0;
 	int token;
 	int it;
@@ -29,7 +23,7 @@ int main()
 	rules[5] = 2;
 	rules[6] = 2;
 	rules[7] = 2;
-	rules[8] = 4; /* row left */
+	rules[8] = 4; /* row lleft */
 	rules[9] = 3;
 	rules[10] = 2;
 	rules[11] = 1;

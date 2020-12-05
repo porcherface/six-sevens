@@ -59,13 +59,19 @@ int heuristic_start(int rules[], int size, int *board)
 	return (placed);
 }
 
-int check_rules(/*int rules[], */int size, int board[], int hero)
+int check_rules(int rules[], int size, int board[], int hero)
 {
 	/* all the rules to exclude a placement go here */ 
 	/* we might wanna know who is our hero to speed up */
 	int hero_row; 
 	int hero_col;
 	int it;
+
+	int rulvalues[4];
+	rulvalues[0] = rules[hero % size + size * 0];
+	rulvalues[1] = rules[hero % size + size * 1];
+	rulvalues[2] = rules[hero / size + size * 0];
+	rulvalues[3] = rules[hero / size + size * 1];
 
 	hero_col = hero % size;
 	hero_row = hero / size;
@@ -76,12 +82,12 @@ int check_rules(/*int rules[], */int size, int board[], int hero)
 	write(1, "col:",4); write(1, &c, 1);  write(1, "\n", 1);
 
 	it = 0;
-  	while (it < 9)
+  	while (it < 16)
 	{
 		c = board[it] + '0';
 		write(1, &c, 1);
 			
-		if (it % 3 == 2)
+		if (it % 4 == 3)
 			write(1, "\n", 1);
 		else
 			write(1, " ", 1);
@@ -105,10 +111,73 @@ int check_rules(/*int rules[], */int size, int board[], int hero)
  		}
 		it++;
 	}
+ 	
+  	write(1, "rules:",6);
+ 	c = rulvalues[0] + '0';
+ 	write(1, &c, 1);
+	c = rulvalues[1] + '0';
+ 	write(1, &c, 1);
+	c = rulvalues[2] + '0';
+ 	write(1, &c, 1);
+	c = rulvalues[3] + '0';
+ 	write(1, &c, 1);
+	write(1, "\n", 1);
 
-	/* check on rules */
 
-	write(1, "canplace\n", 9);
+	int counter = 0;
+	int max = 0;
+	it = 0;
+	int flag = 0;
+	while (it < size)
+	{
+		if (board[hero_col + size * it] > max)
+		{
+			max = board[hero_col + size * it];
+			counter++;
+		}
+		if (!board[hero_col + size * it])
+			flag = (1);
+		if (!board[it + size * hero_row])
+			flag=  (1);
+		
+		it++;
+	}
+	if(counter != rulvalues[0] && !flag)
+	{
+		write(1, "notplace0\n", 10);
+		return (0);
+	}
+
+
+
+	counter = 0;
+	max = 0;
+	it = 0;
+	flag = 0;
+	while (it < size)
+	{
+		if (board[it + size * hero_row] > max)
+		{
+			max = board[it + size * hero_row];
+			counter++;
+		}
+		if (!board[hero_col + size * it])
+			flag=  (1);
+		if (!board[it + size * hero_row])
+			flag=  (1);
+		
+		it++;
+	}
+
+	if(counter != rulvalues[2] && !flag)
+	{
+		write(1, "notplace2\n", 10);
+		return (0);
+	}
+
+
+
+ 	write(1, "canplace\n", 9);
 
 	return (1);
 }
@@ -148,11 +217,11 @@ int tree_search(int rules[], int size, int *board, int copy[], int placed )
 	}
 	/* we see the board and choose the hero*/
 	hero = choose_hero(copy, size);
- 	while (it < 9)
+ 	while (it < 16)
 	{
 		c = copy[it] + '0';
 		write(1, &c, 1);
-		if (it % 3 == 2)
+		if (it % 4 == 3)
 			write(1, "\n", 1);
 		else
 			write(1, " ", 1);
@@ -168,7 +237,7 @@ int tree_search(int rules[], int size, int *board, int copy[], int placed )
 		write(1, &c, 1);
 	    write(1, "\n", 1);
 
-		if (check_rules(/*rules,*/ size, copy, hero))
+		if (check_rules(rules, size, copy, hero))
 		{	
 			result = tree_search(rules, size, board, copy, placed + 1 );
 			if(result == 1)
