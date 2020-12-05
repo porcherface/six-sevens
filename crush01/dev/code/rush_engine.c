@@ -47,7 +47,7 @@ int heuristic_start(int rules[], int size, int *board)
 	return (placed);
 }
 
-int check_rules(/*int rules[], */int size, int board[], int hero)
+int check_rules(/*int rules[],*/ int size, int board[], int hero)
 {
 	int hero_row; 
 	int hero_col;
@@ -56,16 +56,54 @@ int check_rules(/*int rules[], */int size, int board[], int hero)
 	hero_col = hero % size;
 	hero_row = hero / size;
 
+	//int sumcol = 0;
+	//int sumrow = 0;
+
 	it = 0;
 	while (it < size)
 	{
-		if ((board[hero_col + size * it] == board[hero]) && ((hero_col + size * it)!= hero) )
+		if ((board[hero_col + size * it] == board[hero]) && ((hero_col + size * it)!= hero))
  			return (0);
 		if ((board[it + size * hero_row] == board[hero]) && ((it + size * hero_row)!= hero))
 			return (0);
 		it++;
 	}
+	/*
+	int r1 = hero % size + size * 0;
+	it = 0;
+	int count = 0;
+	int max = 0;
+	while (it < size)
+	{
+		if (board[hero_col + size * it] > max)
+		{
+			max = board[hero_col + size * it];
+			count++;
+		} 
+	}
+	if(count > rules[r1])
+	{
+		return (0);
+	}
+	//int r2 = hero % size + size * 1;
 	
+	int r3 = hero % size + size * 2;
+	it = 0;
+	count = 0;
+	while (it < size)
+	{
+		if (board[it + size * hero_row] > max)
+		{
+			max = board[it + size * hero_row];
+			count++;
+		} 
+	}
+	if(count > rules[r3])
+	{
+		return (0);
+	}
+	//int r4 = hero % size + size * 3;
+*/
 
 	return (1);
 }

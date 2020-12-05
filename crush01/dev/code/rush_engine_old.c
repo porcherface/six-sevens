@@ -158,7 +158,6 @@ int tree_search(int rules[], int size, int *board, int copy[], int placed )
 			write(1, " ", 1);
 		it++;
 	}
-
 	it =0;
 	/* for each possibility of our hero, we go deeper*/
 	while (it < size)
