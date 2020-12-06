@@ -12,7 +12,7 @@
 
 #include <unistd.h>
 
-int tree_search(int rules[], int size, int *board, int copy[], int placed );
+int tree_search(int rules[], int size, int *board, int placed);
 
 int deterministic_start(int rules[], int size, int *board)
 {
@@ -72,7 +72,7 @@ int rush_engine(int rules[], int size, int *board)
 	placed += deterministic_start(rules, size, board);
 	
 	/* then we launch the search*/
-	result = tree_search(rules, size, board, board, placed);
+	result = tree_search(rules, size, board, placed);
  
 	/* hope for the best */
 	return !result;

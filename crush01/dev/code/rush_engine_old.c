@@ -173,6 +173,7 @@ int choose_hero(int board[], int size)
 	it = 0;
 	while (board[it] != 0 && it < size * size)
 		it++;
+
 	hero = it;
 	/* the more uniform is the search, the better it converges */
 	char c = hero + '0';
@@ -184,12 +185,12 @@ int choose_hero(int board[], int size)
 	   kinda uniform*/
 }
 
-int tree_search(int rules[], int size, int *board, int copy[], int placed )
+int tree_search(int rules[], int size, int *board, int placed )
 {
 	int hero;
 	int it;
 	int result;
-	//char c;
+	char c;
 	/* if we placed NxN boxes we won! */
 	it = 0;
 	//result = placed;
@@ -197,7 +198,7 @@ int tree_search(int rules[], int size, int *board, int copy[], int placed )
 	{	write(1, "WIN\n", 4);
 		return (1);
 	}
-	/*
+	
 	while (it < size*size)
 	{
 		c = board[it] + '0';
@@ -209,14 +210,13 @@ int tree_search(int rules[], int size, int *board, int copy[], int placed )
 			write(1, " ", 1);
 		it++;
 	}
-	*/
 	/* we see the board and choose the hero*/
-	hero = choose_hero(copy, size);
+	hero = choose_hero(board, size);
 	it =0;
 	/* for each possibility of our hero, we go deeper*/
 	while (it < size)
 	{
-		copy[hero] = it + 1;
+		board[hero] = it + 1;
 		/*
 		write(1, "heroval:" ,8);
 		c = copy[hero] +'0';
@@ -225,18 +225,18 @@ int tree_search(int rules[], int size, int *board, int copy[], int placed )
 	        */
 	        if (check_view(rules, size, board, hero))
 	        {
-			if (check_boxes(size, copy, hero))
+			if (check_boxes(size, board, hero))
 			{	
 
 			 	write(1, "canplace\n", 9);
-				result = tree_search(rules, size, board, copy, placed + 1 );
+				result = tree_search(rules, size, board, placed + 1 );
 				if(result == 1)
 				{
 					return (1);
 				}
 			}
 		}
- 		copy[hero] = 0;
+ 		board[hero] = 0;
 		it++;
 	}
 

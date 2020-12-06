@@ -9,10 +9,16 @@ int main()
 	/*
 	int size = 3;
 	char *args = "1 3 2 2 1 2 1 3 2 2 1 2";
-	
+	*/
+
+	/*
 	int size = 4;
 	char *args = "1 2 3 2 3 2 1 2 1 3 2 3 3 1 3 2";
 	*/
+
+	/* subject example */
+	int size = 4;
+	char *args = "4 3 2 1 1 2 2 2 4 3 2 1 1 2 2 2";
 	/*
 	int size = 5;
 	char *args = "2 4 3 1 2 3 1 3 5 2 2 1 3 3 2 2 3 3 1 2";
