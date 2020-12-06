@@ -62,7 +62,14 @@ int	rush_engine(int rules[], int size, int *board)
 {
 	int placed;
 	int result;
+	int it;
 
+	it = 0;
+	while (it < size * size)
+	{
+		board[it] = 0;
+		it++;
+	}
 	placed = 0;
 	result = 0;
 	placed += deterministic_start(rules, size, board);

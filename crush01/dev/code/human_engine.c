@@ -14,49 +14,43 @@
 
 int tree_search(int rules[], int size, int *board, int placed);
 
-int deterministic_start(int rules[], int size, int *board)
+int rule_of_1(int rules[], int size, int *board, int placed)
 {
-	/* if one of us finds a rule for a exact placement we 
-	can hard-code it here  */
-
-	/* two examples*/
-	/* rule of 1 */
-	/* if there is a 1 on rules, we can place a N close to it */
-
-	/* rule of N */
-	/* a rule of N fully places the row/column ascendingly*/
 	int it;
-	int row;
-	int col;
-	int placed;
+	int rc[2];
 
-	placed = 0;
 	it = 0;
 	while (it < size * 4)
 	{
 		if (rules[it] == 1)
 		{
-			/* rule is on row */
 			if( it < size * 2)
 			{
-				row = it % size;
-				col = (it < size) * 0 + (it >= size)*(size -1);
+				rc[0] = it % size;
+				rc[1] = (it < size) * 0 + (it >= size) * (size -1);
 			}
 			else
 			{
-				row = (it < (3 * size)) * 0 + (it >= (size * 3))*(size -1);
-				col = it % size;
+				rc[0] = (it < (3 * size)) * 0 + (it >= (size * 3)) * (size -1);
+				rc[1] = it % size;
 			}
-
-			if (!board[row + size * col])
+			if (!board[rc[0] + size * rc[1]])
 			{
-				board[row + size * col] = size;
+				board[rc[0] + size * rc[1]] = size;
 				placed++;
-				write(1, "placed\n", 7);
 			}
 		}
 		it++;
 	}
+	return (placed);
+}
+
+int deterministic_start(int rules[], int size, int *board)
+{
+	int placed;
+
+	placed = 0;
+	placed += rule_of_1(rules, size, board, placed);
 	return (placed);
 }
 
@@ -67,13 +61,7 @@ int rush_engine(int rules[], int size, int *board)
 
 	placed = 0; 
 	result = 0;
-	/* first we try to fill what we can
-	   with some heuristics */
 	placed += deterministic_start(rules, size, board);
-	
-	/* then we launch the search*/
 	result = tree_search(rules, size, board, placed);
- 
-	/* hope for the best */
-	return !result;
+	return (!result);
 }

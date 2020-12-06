@@ -40,12 +40,6 @@ int		ft_putnbr(int nb)
 	return (0);
 }
 
-int		ft_putchar(char c)
-{
-	write(1, &c, 1);
-	return (0);
-}
-
 int		print_output(int token, int board[], int size)
 {
 	int cont;
