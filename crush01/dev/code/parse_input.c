@@ -16,10 +16,9 @@
 
 int	check_space(char *input);
 int	ft_str_is_numeric(char *str);
-int get_size(char *input, int size);
-void pop_rules(char *input, int *rules, int size, int i);
+void pop_rules(char *input, int *rules, int i);
 int my_atoi(const char *input, int i);
-int parse_input(int argc, char *argv, int *rules, int *board);
+int parse_input(int argc, char *argv, int *rules);
 
 int my_atoi(const char *input,int i)
 {
@@ -30,24 +29,21 @@ int my_atoi(const char *input,int i)
 	accumulator = 0;
 	while (input[i] != ' ' && input[i] != '\0') 
 	{
-		write(1, "ato2_ok\n", 8);
 		curr_val = (int)(input[i] - '0');
-			printf("curr_val: %d\n", curr_val);
-		if (input[i + 1] >= '0' && input[i + 1] <= '9' && input[i + 1] != '\0')
+		if (input[i + 1] >= '0' && input[i + 1] <= '9')
 		{
 			accumulator = accumulator * 10 + curr_val;
 		}
 		else if (input[i + 1] == ' ' || input[i + 1] == '\0')
 		{
-			accumulator = curr_val;
+			accumulator = accumulator * 10 + curr_val;
 		}
 		i++;
 	}
-	printf("accumulator: %d\n", accumulator);
 	return (accumulator);
 }
 
-void pop_rules(char *input, int *rules, int size, int i)
+void pop_rules(char *input, int *rules, int i)
 {
 	int i2;
 
@@ -60,30 +56,11 @@ void pop_rules(char *input, int *rules, int size, int i)
 		{
 			rules[i2] = my_atoi(input, i);
 			i2++;
-		//	if (i2 != (size - 1) && input[i] != ' ')
-		//		i2++;
-			write(1, "ato1_ok\n", 8);
+		if (input[i + 1] != ' ')
+			i++;
 		}
 		i++;
 	}
-		write(1, "pop_ok\n", 7);
-}
-
-int get_size(char *input, int size)
-{
-	int i;
-	int arg_count;
-	
-	i = 0;
-	arg_count = 0;
-	while (input[i] != '\0')
-	{
-		if (input[i] == ' ')
-			size++;
-		i++;
-    }
-    write(1, "check_sz_ok\n", 12);
-    return (size + 1);
 }
 
 int	check_rules(int *rules, int size)
@@ -94,10 +71,10 @@ int	check_rules(int *rules, int size)
 	maxv = 0;
 	while(i < size)
 	{
-		if (constraint[i] == 0)
+		if (rules[i] == 0)
 			return (-2);
-		if (constraint[i] > maxv)
-			maxv = constraint[i];
+		if (rules[i] > maxv)
+			maxv = rules[i];
 		i++;
 	}
 		if (maxv != size)
@@ -122,7 +99,6 @@ int	check_space(char *input)
 		}
 		a++;
 	}
-	write(1, "check_sp_ok\n", 12);
 	if (input[a - 1] == ' ')
 		return (-2);
 	return 1;
@@ -137,73 +113,32 @@ int		ft_str_is_numeric(char *str)
 	{
 		if ((*p_str < '0' || *p_str > '9') && *p_str != ' ')
         {
-          //  if (*p_str != ' ' && (*p_str <= '0' && *p_str >= '9'))
-			//	return (-2);
             return (-2);
         }
 		p_str++;
     }
-    write(1, "ok_num\n", 7);
     return (check_space(str));
 }
 
-int parse_input(int argc, char *argv, int *rules, int *board)
+int parse_input(int size, char *argv, int *rules)
 {
-	int size;
-	int i;
+ 	int i;
 
 	i = 0;
-	size = 0;
-	if (argc != 2)
-	{
-		return (-1);
-	}
-
+ 
 	char *str;
 	str = argv;
 	if(ft_str_is_numeric(str) != 1)
 		return (ft_str_is_numeric(str));
-
-	size = get_size(argv, size);
-	if ((size % 4) != 0)
-		return (-2);
-	printf("size: %d\n", size);
     int k;
 	if (size > 0)
 	{
-		board = (int*)malloc((size/4) * (size/4) * sizeof(int));
-		rules = (int*)malloc(size * sizeof(int));
-		// fill board with zeros
-		while (i != (size - 1))
-		{
-			board[i] = 0;
-			i++;
-		}
-
-		write(1, "check_fill_bd\n", 15);
-		// fill rules with str elements
 		i = 0;
-		pop_rules(str, rules, size, i);
+		pop_rules(str, rules, i);
 		k = 0;
-		while (k < size)
-		{	
-			printf("%d", rules[k]);
-			k++;
-		}
-	//	check_rules(rules, )
 	}
 	else
 		return (-4);
-	if (board != 0x0 && rules != 0x0)
-		return (size);
-	return (-4);
+	return (1);
 
-}
-
-int main(int argc, char **argv)
-{
-	int *board;
-	int *rules;
-
-	parse_input(argc, argv[1], rules, board);
-}
+} 
