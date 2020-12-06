@@ -1,7 +1,9 @@
 seb=print_output.c
-and=engine_test.c
-rob=rush_engine_old.c
+rob=engine_test.c
+and="rush_engine_old.c"
+and2="human_engine.c"
 
-gcc -Wall -Wextra -Werror $rob code/$seb code/$and -o test_rush.out
+
+gcc -Wall -Wextra -Werror $rob code/$seb code/$and code/$and2 -o test_rush.out
 ./test_rush.out
 rm test_rush.out
