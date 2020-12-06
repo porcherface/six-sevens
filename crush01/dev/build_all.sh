@@ -1,4 +1,4 @@
-targetdir="mycode/"
+targetdir="submit/"
 oraclename="seb_and_rob_oracle.txt"
 #gcc -Wall -Wextra -Werror $targetdir"ft_atoi_replace.c" $targetdir"print_output.c" $targetdir"rush_engine.c" $targetdir"main.c" -o rush_01.out
 gcc -Wall -Wextra -Werror "$targetdir"* -o rush_01.out

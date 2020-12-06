@@ -10,22 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int		check_num3(char c)
+int	check_num3(char c)
 {
 	if (c >= '0' && c <= '9')
 		return (2);
-	if (c == '+' || c == '-')
-		return (1);
-	if (c == ' ' || c == '\n')
-		return (1);
-	if (c == '\t' || c == '\v')
-		return (1);
-	if (c == '\f' || c == '\r')
+	if (c == ' ')
 		return (1);
 	return (0);
 }
  
-int		digits_to_number(int digits[], unsigned int num, int sign)
+int	digits_to_number(int digits[], unsigned int num, int sign)
 {
 	unsigned int nb;
 	unsigned int it;
@@ -45,7 +39,7 @@ int		digits_to_number(int digits[], unsigned int num, int sign)
 	return nb * sign;
 }
 
-int		ft_atoi(char *str)
+int	ft_atoi(char *str)
 {
 	unsigned int	it;
 	unsigned int	it2;

@@ -10,62 +10,65 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int check_view_pro(int rulvalue, int s, int board[], int hero, int f)
+int	check_view_pro(int rule, int *s, int board[], int hero)
 {
-	int hcr[2];
-	int A[6];
-	
-	A[5] = 0;
-	A[2] = 0;
-	A[1] = ((f % 2) == 0) * (s) + ((f % 2)==1) * (-1);
-	A[0] = ((f % 2) == 0) * 0 + ((f % 2)==1) * (s - 1);
-	hcr[0] = hero % s;
-	hcr[1] = hero / s;
-	A[3] = 0;
-	while ( A[0] != A[1])
+	int a[8];
+
+	a[5] = 0;
+	a[2] = 0;
+	a[1] = ((s[4] % 2) == 0) * (s[3]) + ((s[4] % 2) == 1) * (-1);
+	a[0] = ((s[4] % 2) == 0) * 0 + ((s[4] % 2) == 1) * (s[3] - 1);
+	a[6] = hero % s[3];
+	a[7] = hero / s[3];
+	a[3] = 0;
+	while (a[0] != a[1])
 	{
-		A[4] = (hcr[0] + s * A[0]) * (f < 2) + (A[0] + s * hcr[1]) * (f > 1);
-		if (board[A[4]] > A[3])
+		a[4] = (a[6] + s[3] * a[0]) * (s[4] < 2);
+		a[4] += (a[0] + s[3] * a[7]) * (s[4] > 1);
+		if (board[a[4]] > a[3])
 		{
-			A[3] = board[A[4]];
-			A[2]++;
+			a[3] = board[a[4]];
+			a[2]++;
 		}
-		if (!board[A[4]])
-			A[5] = (1);
-		A[0]  = (A[0] + 1)*((f % 2) == 0) + (A[0] - 1)*((f % 2) == 1);
+		if (!board[a[4]])
+			a[5] = (1);
+		a[0] = (a[0] + 1) * ((s[4] % 2) == 0) + (a[0] - 1) * ((s[4] % 2) == 1);
 	}
-	if( A[2] != rulvalue && !A[5])
+	if (a[2] != rule && !a[5])
 		return (0);
-	return(1);
+	return (1);
 }
 
-int check_boxes(int rules[], int s, int board[], int hero)
+int	check_boxes(int r[], int s, int b[], int hero)
 {
-	int hr; 
-	int hc;
-	int it;
+	int h[6];
 	int is_valid;
 
+	h[3] = s;
 	is_valid = 0;
-	hc = hero % s;
-	hr = hero / s;
-	it = 0;  
-	while (it < s)
+	h[1] = hero % s;
+	h[0] = hero / s;
+	h[5] = 0;
+	while (h[5] < s)
 	{
-		if ((board[hc + s * it] == board[hero]) && ((hc + s * it)!= hero))
+		if ((b[h[1] + s * h[5]] == b[hero]) && ((h[1] + s * h[5]) != hero))
 			return (0);
-		if ((board[it + s * hr] == board[hero]) && ((it + s * hr)!= hero))
+		if ((b[h[5] + s * h[0]] == b[hero]) && ((h[5] + s * h[0]) != hero))
 			return (0);
-		it++;
+		h[5]++;
 	}
-	is_valid = check_view_pro(rules[hero % s + s * 0], s, board, hero, 0);
-	is_valid *= check_view_pro(rules[hero % s + s * 1], s, board, hero, 1);
-	is_valid *= check_view_pro(rules[hero / s + s * 2], s, board, hero, 2);	
-	is_valid *= check_view_pro(rules[hero / s + s * 3], s, board, hero, 3);
+	h[4] = 0;
+	is_valid = check_view_pro(r[hero % s + s * 0], h, b, hero);
+	h[4] = 1;
+	is_valid *= check_view_pro(r[hero % s + s * 1], h, b, hero);
+	h[4] = 2;
+	is_valid *= check_view_pro(r[hero / s + s * 2], h, b, hero);
+	h[4] = 3;
+	is_valid *= check_view_pro(r[hero / s + s * 3], h, b, hero);
 	return (is_valid);
 }
 
-int choose_hero(int board[], int size)
+int	choose_hero(int board[], int size)
 {
 	int hero;
 	int it;
@@ -77,29 +80,29 @@ int choose_hero(int board[], int size)
 	return (hero);
 }
 
-int tree_search(int rules[], int size, int *board, int placed )
+int	tree_search(int rules[], int size, int *board, int placed)
 {
 	int hero;
 	int it;
 	int result;
-	
+
 	it = 0;
-	if (placed == size*size)
+	if (placed == size * size)
 	{
 		return (1);
 	}
 	hero = choose_hero(board, size);
-	it =0;
+	it = 0;
 	while (it < size)
 	{
 		board[hero] = it + 1;
 		if (check_boxes(rules, size, board, hero))
-		{	
+		{
 			result = tree_search(rules, size, board, placed + 1);
-			if(result == 1)
+			if (result == 1)
 				return (1);
 		}
- 		board[hero] = 0;
+		board[hero] = 0;
 		it++;
 	}
 	return (0);

@@ -12,30 +12,30 @@
 
 int	tree_search(int rules[], int size, int *board, int placed);
 
-int	rule_of_1(int rules[], int s, int *board, int placed)
+int	rule_of_1(int rules[], int s[], int *board, int placed)
 {
-	int it;
 	int rc[2];
 
-	it = 0;
-	while (it++ < s * 4)
+	while (s[1] < s[0] * 4)
 	{
-		if (rules[it] == 1)
+		if (rules[s[1]] == 1)
 		{
-			if (it < s * 2)
+			if (s[1] < (s[0] * 2))
 			{
-				rc[0] = it % s;
-				rc[1] = (it < s) * 0 + (it >= s) * (s - 1);
+				rc[0] = s[1] % s[0];
+				rc[1] = (s[1] < s[0]) * 0 + (s[1] >= s[0]) * (s[0] - 1);
 			}
 			else
 			{
-				rc[0] = (it < (3 * s)) * 0 + (it >= (s * 3)) * (s - 1);
-				rc[1] = it % s;
+				rc[0] = (s[1] < (3 * s[0])) * 0;
+				rc[0] += (s[1] >= (s[0] * 3)) * (s[0] - 1);
+				rc[1] = s[1] % s[0];
 			}
-			if (!board[rc[0] + s * rc[1]])
+			if (!board[rc[0] + s[0] * rc[1]])
 				placed++;
-			board[rc[0] + s * rc[1]] = s;
+			board[rc[0] + s[0] * rc[1]] = s[0];
 		}
+		s[1]++;
 	}
 	return (placed);
 }
@@ -48,10 +48,13 @@ int	rule_of_n(int placed)
 int	deterministic_start(int rules[], int size, int *board)
 {
 	int placed;
+	int itsize[2];
 
+	itsize[0] = 0;
+	itsize[1] = size;
 	placed = 0;
-	placed += rule_of_1(rules, size, board, placed);
-	palced += rule_of_n(placed);
+	placed += rule_of_1(rules, itsize, board, placed);
+	placed += rule_of_n(placed);
 	return (placed);
 }
 

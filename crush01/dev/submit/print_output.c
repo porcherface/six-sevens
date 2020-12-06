@@ -12,9 +12,38 @@
 
 #include <unistd.h>
 
-void	ft_putchar(char c)
+int		ft_putnbr(int nb)
+{
+	char		digit[5];
+	int			iterator;
+
+	iterator = 0;
+	write(1, "-", 1 * (nb < 0));
+	nb = nb * (nb < 0) * -1 + nb * (nb >= 0);
+	while (nb * nb > 0 || iterator == 0)
+	{
+		digit[iterator++] = nb % 10 + '0';
+		nb = ((nb - (nb % 10)) / 10) * (nb > 0) + 0;
+	}
+	if (!nb)
+	{
+		iterator--;
+	}
+	while (iterator + 1)
+	{
+		if (digit[iterator] || iterator == 0)
+		{
+			write(1, &digit[iterator], 1);
+		}
+		iterator--;
+	}
+	return (0);
+}
+
+int		ft_putchar(char c)
 {
 	write(1, &c, 1);
+	return (0);
 }
 
 int		print_output(int token, int board[], int size)
@@ -26,7 +55,7 @@ int		print_output(int token, int board[], int size)
 	{
 		while (cont != size * size)
 		{
-			ft_putchar(48 + board[cont]);
+			ft_putnbr(board[cont]);
 			write(1, " ", 1);
 			cont++;
 			if (cont == size || cont % size == 0)
