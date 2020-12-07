@@ -1,40 +1,22 @@
-int ft_sqrt_ceil6(int nb)
+int search_prime(int nb, int i)
 {
 	int val;
 
-	if (nb < 0)
+	if (nb < 2) 
 		return (0);
-	val = 0;
-	while ((val * val) < nb)
-	{
-		val++;
-	}
+	if (nb == 2)
+		return (1); 
+	if (nb % i == 0) 
+		return (0); 
+	if (i * i > nb) 
+		return (1); 
+	val = search_prime(nb, i+1 + 1*(i>2)); 
 	return (val);
 }
 
 int ft_is_prime(int nb)
-{
-	unsigned int val;
-	unsigned int sqrt;
-	
-	if (nb < 2)
-		return (0);
-	if ((nb == 2) || (nb == 3))
-	{
+{ 
+	if (nb == 2147483647)
 		return (1);
-	}
-	if ((nb % 2 == 0))
-	{
-		return (0);
-	}
-
-	val = 3;
-	sqrt = ft_sqrt_ceil7(nb) + 1;
-	while (val < sqrt)
-	{
-		if ((nb % val) == 0)
-			return (1);
-		val+=2; 
-	}
-	return (0);
-}
+	return search_prime(nb, 2); 
+} 

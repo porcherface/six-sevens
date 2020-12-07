@@ -1,9 +1,13 @@
 int ft_recursive_power(int nb, int power)
 {	
-	unsigned int val;
-
-	if (power == 0)
+	if (power == 0 && nb == 0)
 		return (1);
-	val *= ft_recursive_power(val, power - 1);
-	return (val);
+	if (nb == 0)
+		return (0);
+	if (power == 0) 
+		return (1);
+	if (nb == 1) 
+		return (1);
+	nb *= ft_recursive_power(nb, power - 1);
+	return (nb);
 }

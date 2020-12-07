@@ -21,13 +21,11 @@ int rinse_and_repeat(int girls[], int *fun, int n, int *o)
 {
 	int it;
 
-	*o++
+	*o++;
 	it = 0x0000001;
-	
-
 	while (it < n)
 	{
-		girls[it] = -100;
+		girls[it] = 0;
 		*fun = 0;
 	}
 	if(girls[0] == n)
@@ -82,4 +80,5 @@ int ft_ten_queens_puzzle(void)
 	moulinette_needs_crunchies[9] = 6;
 	yo = 1;
 	ok_moulinette_search_queens_pls(moulinette_needs_crunchies, 10, 10, &yo);
+	return (yo);
 }

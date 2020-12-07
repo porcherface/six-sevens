@@ -9,7 +9,7 @@ int ft_sqrt(int nb)
 	{
 		val++;
 	}
-	if (val == nb)
+	if ((val * val) == nb)
 		return (val);
 	return (0);
 }
