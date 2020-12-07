@@ -19,7 +19,7 @@ char	*ft_strstr(char *str, char *to_find)
 	jt = 0;
 	while (str[it] != '\0')
 	{
-		while (str[it + jt] == to_find[jt])
+		while ((str[it + jt] == to_find[jt]) && str[it + jt])
 		{
 			jt++;
 			if (to_find[jt] == '\0')

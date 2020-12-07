@@ -27,5 +27,14 @@ int		ft_strncmp(char *s1, char *s2, unsigned int n)
 				return (-1);
 		}
 	}
+	if (it == n)
+		return (0);
+	else
+	{
+		if (s1[it] > s2[it])
+				return (1);
+			else
+				return (-1);
+	}
 	return (0);
-}
+}	

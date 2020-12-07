@@ -86,6 +86,22 @@ int main()
 	{
 		write(1, "  [FAIL]\n",9);	
 	}
+	if (ft_strncmp("balla", "ball\0",4) == 0)
+	{
+		write(1, "  [ OK ]\n",9);
+	}
+	else
+	{
+		write(1, "  [FAIL]\n",9);	
+	}
+	if (ft_strncmp("balla", "ball\0",5) > 0)
+	{
+		write(1, "  [ OK ]\n",9);
+	}
+	else
+	{
+		write(1, "  [FAIL]\n",9);	
+	}
 	char catty[32];
 	char app[5];
 	int it = 0;
