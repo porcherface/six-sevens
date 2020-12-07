@@ -91,7 +91,14 @@ int main()
 	{
 		ft_putstr("  [FAIL]\n");	
 	}
-
+	if ( 235 == ft_atoi("       --+--++235 6m2731vugeuirg"))
+	{
+		ft_putstr("  [ OK ]\n");
+	}
+	else
+	{
+		ft_putstr("  [FAIL]\n");	
+	}	
 	if (0 == ft_atoi("--+-       a2147483648aaaaaa4446s"))
 	{
 		ft_putstr("  [ OK ]\n");

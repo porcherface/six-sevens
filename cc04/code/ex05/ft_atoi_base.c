@@ -25,11 +25,11 @@ int		check_num5(char c, char *base, int flag)
 	}
 	if ((c == '+' || c == '-') && flag)
 		return (-3);
-	if (c == ' ' || c == '\n')
+	if ((c == ' ' || c == '\n') && flag)
 		return (-2);
-	if (c == '\t' || c == '\v')
+	if ((c == '\t' || c == '\v') && flag)
 		return (-2);
-	if (c == '\f' || c == '\r')
+	if ((c == '\f' || c == '\r') && flag)
 		return (-2);
 	return (-1);
 }
