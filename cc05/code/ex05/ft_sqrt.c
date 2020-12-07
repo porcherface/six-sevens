@@ -2,8 +2,10 @@ int ft_sqrt(int nb)
 {
 	int val;
 
+	if (nb < 0)
+		return (0);
 	val = 0;
-	while (val * val < nb)
+	while ((val * val) < nb)
 	{
 		val++;
 	}
