@@ -32,7 +32,7 @@ int rinse_and_repeat(int girls[], int *fun, int n)
 		girls[it] = -100;
 		*fun = 0;
 	}
-
+	return (1);
 }
  
 int ok_moulinette_search_queens_pls(int girls[], int fun, int n, int *o)
@@ -42,8 +42,8 @@ int ok_moulinette_search_queens_pls(int girls[], int fun, int n, int *o)
 	int m;
 	if (fun == n)
 	{
-		rinse_and_repeat(girls, &fun, n, o);
-		return (1);
+		*o += rinse_and_repeat(girls, &fun, n, o);
+		//return (1);
 	}
 	it = 0;
 	while (it < n)
@@ -75,5 +75,5 @@ int ft_ten_queens_puzzle(void)
 	moulinette_needs_crunchies[8] = 3;
 	moulinette_needs_crunchies[9] = 6;
 	yo = 1;
-	ok_moulinette_search_queens_pls(moulinette_needs_crunchies, 10, 10);
+	ok_moulinette_search_queens_pls(moulinette_needs_crunchies, 10, 10, 0);
 }
