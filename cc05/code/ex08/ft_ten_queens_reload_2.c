@@ -12,81 +12,111 @@
 
 #include <unistd.h>
 
-
-int is_valid_placement(int *pos)
-{
-	int it;
-	int girl;
-
-	it = 0;
-	girl = 0;
-	while(girl < 10)
-	{	
-		while(it < 10)
-		{
-			if (((pos[it] - it + girl) == pos[girl]) && (it != girl))
-				return (0);
-			if (((pos[it] + it - girl) == pos[girl]) && (it != girl))
-				return (0);
-			it++;
-		}
-		it = 0;
-		girl++;
-	}
-	return (1);
-}
- 
-void print_them(int *a)
+void	print_them(int *a)
 {
 	int it;
 	char c;
 	
 	it = 0;
-	while(it < 10)
+	while (it < 10)
 	{
 		c = a[it] + '0';
 		write(1, &c, 1);
 		it++;
 	}
 	write(1, "\n", 1);
-	
 }
 
-int permute(int *a, int l, int r, int *total) 
+int		is_valid_placement(int *pos, int size)
+{
+	int	it;
+	int	jt;
+	int	distance;
+
+
+	it = 0;
+	jt = 1;
+	while (it < size + 1)
+	{	
+		jt = it + 1;
+		while (jt < size + 1)
+		{
+			distance = jt - it;
+			if ((pos[it] - distance) == pos[jt])
+				return (0);
+			if ((pos[it] + distance) == pos[jt])
+				return (0);
+			jt++;
+		}
+		it++;
+	}
+	print_them(pos);
+	return (1);
+}
+
+
+void	change(int *a,int i,int j, int flag)
 {
 	int tmp;
-	int it;
 
-	if((*total) == 724)
-		return (0);
-
-	if (l == r)
-	{	
-		if (is_valid_placement(a)) 
+	if (flag)
+	{
+		tmp = a[j];
+		while(j > i)
 		{
-			print_them(a);
-			(*total)++;
+			a[j] = a[j - 1];
+			j--;
 		}
+		a[j] = tmp;
 	}
 	else
-	{ 	
-		it = l;
- 		while (it <= r) 
-		{ 
-			tmp = a[r];
-			a[r] = a[it];
-			a[it] = tmp; 
-			permute(a, l, r - 1, total); 
-			tmp = a[r];
-			a[r] = a[it];
-			a[it] = tmp;
-			it++;             
+	{
+		tmp = a[i];
+		while (i < j)
+		{
+			a[i] = a[i + 1];
+			i++;
 		}
+		a[i] = tmp;
 	}
-	return (0);
 }
 
-int ft_ten_queens_puzzle(void)
+void swap(int *arr, int i, int j)
+{
+	int tmp;
+
+	tmp = arr[i];
+	arr[i] = arr[j];
+	arr[j] = tmp; 
+}
+
+void	ok_moulinette_solve_thanks(int *arr, int start, int n, int *total)
+{
+	int jt;
+
+	if (start - 1 == n)
+	{
+		(*total) += is_valid_placement(arr, n);
+	}
+	else
+	{
+		jt=start;
+		while (jt <= n)
+		{
+			change(arr, start, jt, 1);
+			
+			//swap(arr, jt, n);
+			ok_moulinette_solve_thanks(arr, start+1, n, total);
+			//swap(arr, start, jt);
+
+
+			change(arr, start, jt, 0);
+			jt++;
+		}
+	}
+}	
+
+int		ft_ten_queens_puzzle(void)
 {
 	int moulinette_needs_crunchies[10];
 	int sols;
@@ -102,8 +132,6 @@ int ft_ten_queens_puzzle(void)
 	moulinette_needs_crunchies[7] = 7;
 	moulinette_needs_crunchies[8] = 8;
 	moulinette_needs_crunchies[9] = 9;
-	permute(moulinette_needs_crunchies, 0, 9, &sols); 
-
-
-	return (1);
+	ok_moulinette_solve_thanks(moulinette_needs_crunchies, 0, 9, &sols);
+	return (sols);
 }
