@@ -20,7 +20,7 @@ int	search_prime(int nb, int i)
 		return (1);
 	if (nb % i == 0)
 		return (0);
-	if (i * i > nb)
+	if (i * i > nb  || (i > 50000))
 		return (1);
 	val = search_prime(nb, i + 1 + 1 * (i > 2));
 	return (val);

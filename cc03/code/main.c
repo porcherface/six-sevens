@@ -198,7 +198,7 @@ int main()
 	{
 		write(1, "  [FAIL]\n",9);	
 	}
-	if (0 == ft_strncmp(catty,"aaaaaaaab",9))
+	if (0 == ft_strcmp(catty,"aaaaaaaa"))
 	{
 		write(1, "  [ OK ]\n",9);
 	}

@@ -12,13 +12,12 @@
  
 int ft_sqrt(int nb)
 {
-	int val;
 	int it;
 
 	it = 0;
 	if (nb <= 0)
 		return (0);
-	while ((it * it < nb) || (it <= 50000))
+	while ((it * it < nb) && (it <= 50000))
 		it++;
 	if ((it * it)== nb)
 		return (it);

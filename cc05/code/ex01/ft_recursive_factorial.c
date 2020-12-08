@@ -25,6 +25,6 @@ int	ft_recursive_factorial(int nb)
 		return (1);
 	if (nb >= 13)
 		return (0xbadf00d);
-	if (nb < 0)
-		return (0);
+	return (0);
+
 }
