@@ -14,13 +14,17 @@ int	ft_recursive_factorial(int nb)
 {
 	int res;
 
-	if (nb > 13)
-		return (0xbadf00d);
 	res = 0;
+	if (nb < 13 && nb > 1)
+	{
+		res = ft_recursive_factorial(nb - 1);
+		return (nb * res);
+
+	}
+	if ((nb == 0) || (nb == 1))
+		return (1);
+	if (nb >= 13)
+		return (0xbadf00d);
 	if (nb < 0)
 		return (0);
-	if (nb == 0 || nb == 1)
-		return (1);
-	res = ft_recursive_factorial(nb - 1);
-	return (nb * res);
 }

@@ -28,6 +28,10 @@ int	search_prime2(int nb, int i)
 
 int	hey_moulinette_can_u_check_prime_for_me_thanks(int nb)
 {
+    if ((nb % 2) == 0)
+    	return (0);
+    if ((nb % 3) == 0)
+    	return (0);
 	if (nb == 2147483647)
 		return (1);
 	return (search_prime2(nb, 2));
@@ -35,12 +39,13 @@ int	hey_moulinette_can_u_check_prime_for_me_thanks(int nb)
 
 int	ft_find_next_prime(int nb)
 {
-	nb = (nb + !(nb % 2)) * (nb > 0);
+	if (nb <= 2)
+		return (2);
 	while ("hopefully not forever, not my problem")
 	{
 		if (hey_moulinette_can_u_check_prime_for_me_thanks(nb))
 			return (nb);
-		nb++;
+		nb += 1;
 	}
 	return (0xbadcacca);
 }

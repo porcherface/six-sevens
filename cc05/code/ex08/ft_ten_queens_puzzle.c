@@ -14,8 +14,8 @@
 
 void	print_them(int *arr)
 {
-	int it;
-	char c;
+	int		it;
+	char	c;
 
 	it = 0;
 	while (it++ < 10)
@@ -33,7 +33,7 @@ int		is_valid_placement(int *pos, int size)
 
 	it = 0;
 	while (it < size + 1)
-	{	
+	{
 		jt = it + 1;
 		while (jt < size + 1)
 		{
@@ -49,7 +49,7 @@ int		is_valid_placement(int *pos, int size)
 	return (1);
 }
 
-void	wash_dirt(int *arr,int i,int j, int flag)
+void	wash_dirt(int *arr, int i, int j, int flag)
 {
 	int tmp;
 
@@ -83,16 +83,16 @@ void	ok_moulinette_solve_thanks(int *arr, int start, int n, int *total)
 		(*total) += is_valid_placement(arr, n);
 	else
 	{
-		jt=start;
+		jt = start;
 		while (jt < n)
 		{
 			wash_dirt(arr, start, jt, 1);
-			ok_moulinette_solve_thanks(arr, start+1, n, total);
+			ok_moulinette_solve_thanks(arr, start + 1, n, total);
 			wash_dirt(arr, start, jt, 0);
 			jt++;
 		}
 	}
-}	
+}
 
 int		ft_ten_queens_puzzle(void)
 {

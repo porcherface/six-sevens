@@ -17,7 +17,7 @@ int	ft_iterative_factorial(int nb)
 
 	if (nb == 12)
 		return (479001600);
-	if (nb > 13)
+	if (nb >= 13)
 		return (0xbadf00d);
 	if (nb < 0)
 		return (0);

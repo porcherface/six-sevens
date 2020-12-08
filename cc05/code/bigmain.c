@@ -23,10 +23,10 @@ int ft_fibonacci(int index);
 
 int ft_sqrt(int nb);
 int ft_is_prime(int nb);
-/*
+
 int ft_find_next_prime(int nb);
 int ft_ten_queens_puzzle(void);
-*/
+
 int main()
 {
 	ft_putstr("using ft_putstr for stdout\n");
@@ -64,7 +64,14 @@ int main()
 	{
 		ft_putstr("  [FAIL]\n");	
 	}
-
+	if (0xbadf00d == ft_iterative_factorial(479001600))
+	{
+		ft_putstr("  [ OK ]\n");
+	}
+	else
+	{
+		ft_putstr("  [PASS]\n");	
+	}
 	ft_putstr("ft_recursive_factorial\n");
 	
 	if (0 == ft_recursive_factorial(-2147483648))
@@ -99,7 +106,14 @@ int main()
 	{
 		ft_putstr("  [FAIL]\n");	
 	}
-
+	if (0xbadf00d == ft_recursive_factorial(479001600))
+	{
+		ft_putstr("  [ OK ]\n");
+	}
+	else
+	{
+		ft_putstr("  [PASS]\n");	
+	}
 	ft_putstr("ft_iterative_power\n");
 	if ((12 * 12 * 12) == ft_iterative_power(12, 3))
 	{
@@ -392,13 +406,65 @@ int main()
 	{
 		ft_putstr("  [FAIL]\n");	
 	}
+
+
+
+
+
 	ft_putstr("ft_find_next_prime\n");
-
-
-	int ft_find_next_prime(int nb);
-int ft_ten_queens_puzzle(void);
-
-*/
-
-
+	if (2 == ft_find_next_prime(-2147483647))
+	{
+		ft_putstr("  [ OK ]\n");
+	}
+	else
+	{
+		ft_putstr("  [FAIL]\n");	
+	}
+	if (1547479321 == ft_find_next_prime(1547479309 + 1))
+	{
+		ft_putstr("  [ OK ]\n");
+	}
+	else
+	{
+		ft_putstr("  [FAIL]\n");	
+	}
+	if (1547479309 == ft_find_next_prime(1547479309 - 1))
+	{
+		ft_putstr("  [ OK ]\n");
+	}
+	else
+	{
+		ft_putstr("  [FAIL]\n");	
+	}
+	if (2147483647 == ft_find_next_prime(2147483647))
+	{
+		ft_putstr("  [ OK ]\n");
+	}
+	else
+	{
+		ft_putstr("  [FAIL]\n");	
+	}
+	ft_putstr("ft_ten_queens_puzzle\n");
+	if (1 == ft_ten_queens_puzzle())
+	{
+		ft_putstr("  [ OK ]\n");
+	}
+	else
+	{
+		ft_putstr("  [FAIL]\n");	
+	} 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

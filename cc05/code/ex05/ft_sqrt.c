@@ -9,19 +9,18 @@
 /*   Updated: 2020/12/07 16:59:15 by amazzei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-int	ft_sqrt(int nb)
+ 
+int ft_sqrt(int nb)
 {
 	int val;
+	int it;
 
-	if (nb < 0)
+	it = 0;
+	if (nb <= 0)
 		return (0);
-	val = 0;
-	while ((val * val) < nb)
-	{
-		val++;
-	}
-	if ((val * val) == nb)
-		return (val);
+	while ((it * it < nb) || (it <= 50000))
+		it++;
+	if ((it * it)== nb)
+		return (it);
 	return (0);
 }
