@@ -16,7 +16,7 @@ void	print_them(int *arr)
 {
 	int it;
 	char c;
-	
+
 	it = 0;
 	while (it++ < 10)
 	{
@@ -56,7 +56,7 @@ void	wash_dirt(int *arr,int i,int j, int flag)
 	if (flag)
 	{
 		tmp = arr[j];
-		while(j > i)
+		while (j > i)
 		{
 			arr[j] = arr[j - 1];
 			j--;

@@ -22,15 +22,15 @@ int main()
  	
 	ft_putstr("ft_ten_queens_puzzle\n");
 
-	ft_ten_queens_puzzle();
-	/*if (724 == ft_ten_queens_puzzle())
+	//ft_ten_queens_puzzle();
+	if (724 == ft_ten_queens_puzzle())
 	{
 		ft_putstr("  [ OK ]\n");
 	}
 	else
 	{
 		ft_putstr("  [FAIL]\n");	
-	}*/
+	}
 	//ft_putnbr();
 
 }
