@@ -30,6 +30,16 @@ int ft_ten_queens_puzzle(void);
 int main()
 {
 	ft_putstr("using ft_putstr for stdout\n");
+
+	ft_putstr("ft_ten_queens_puzzle\n");
+	if (724 == ft_ten_queens_puzzle())
+	{
+		ft_putstr("  [ OK ]\n");
+	}
+	else
+	{
+		ft_putstr("  [FAIL]\n");	
+	} 
 	ft_putstr("ft_iterative_factorial\n");
 	
 	if (0 == ft_iterative_factorial(-2147483648))
@@ -255,7 +265,7 @@ int main()
 	{
 		ft_putstr("  [FAIL]\n");	
 	}
-	if (ft_fibonacci(15))
+	if (ft_fibonacci(100))
 	{
 		ft_putstr("  [ OK ]\n");
 	}
@@ -263,7 +273,7 @@ int main()
 	{
 		ft_putstr("  [FAIL]\n");	
 	}
-	if (ft_fibonacci(14))
+	if (ft_fibonacci(30))
 	{
 		ft_putstr("  [ OK ]\n");
 	}
@@ -420,6 +430,31 @@ int main()
 	{
 		ft_putstr("  [FAIL]\n");	
 	}
+
+	if (17 == ft_find_next_prime(14))
+	{
+		ft_putstr("  [ OK ]\n");
+	}
+	else
+	{
+		ft_putstr("  [FAIL]\n");	
+	}
+	if (2 == ft_find_next_prime(1))
+	{
+		ft_putstr("  [ OK ]\n");
+	}
+	else
+	{
+		ft_putstr("  [FAIL]\n");	
+	}
+	if (2 == ft_find_next_prime(0))
+	{
+		ft_putstr("  [ OK ]\n");
+	}
+	else
+	{
+		ft_putstr("  [FAIL]\n");	
+	}
 	if (1547479321 == ft_find_next_prime(1547479309 + 1))
 	{
 		ft_putstr("  [ OK ]\n");
@@ -444,15 +479,7 @@ int main()
 	{
 		ft_putstr("  [FAIL]\n");	
 	}
-	ft_putstr("ft_ten_queens_puzzle\n");
-	if (1 == ft_ten_queens_puzzle())
-	{
-		ft_putstr("  [ OK ]\n");
-	}
-	else
-	{
-		ft_putstr("  [FAIL]\n");	
-	} 
+
 }
 
 
