@@ -173,6 +173,22 @@ int main()
 	{
 		ft_putstr("  [FAIL]\n");	
 	}
+	if ((1) == ft_iterative_power(1, -479001600))
+	{
+		ft_putstr("  [ OK ]\n");
+	}
+	else
+	{
+		ft_putstr("  [FAIL]\n");	
+	}
+	if ((0) == ft_iterative_power(2, -479001600))
+	{
+		ft_putstr("  [ OK ]\n");
+	}
+	else
+	{
+		ft_putstr("  [FAIL]\n");	
+	}
 	ft_putstr("ft_recursive_power\n");
 	if ((12 * 12 * 12) == ft_recursive_power(12, 3))
 	{
@@ -222,6 +238,26 @@ int main()
 	{
 		ft_putstr("  [FAIL]\n");	
 	}
+	if ((1) == ft_recursive_power(1, -479001600))
+	{
+		ft_putstr("  [ OK ]\n");
+	}
+	else
+	{
+		ft_putstr("  [FAIL]\n");	
+	}
+	if ((0) == ft_recursive_power(2, -479001600))
+	{
+		ft_putstr("  [ OK ]\n");
+	}
+	else
+	{
+		ft_putstr("  [FAIL]\n");	
+	}
+
+
+
+	
 	ft_putstr("ft_fibonacci\n");
 	if (0 == ft_fibonacci(0))
 	{
