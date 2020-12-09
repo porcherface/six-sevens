@@ -23,7 +23,7 @@ int		check_num5(char c, char *base, int flag)
 			return (it);
 		it++;
 	}
-	if ((c == '+' || c == '-') && flag)
+	if ((c == '+' || c == '-') && flag < 2)
 		return (-3);
 	if ((c == ' ' || c == '\n') && flag)
 		return (-2);
@@ -102,9 +102,12 @@ int		ft_atoi_base(char *str, char *base)
 	while ((str[it[0]] != '\0') && (check_num5(str[it[0]], base, flag) != -1))
 	{
 		if (check_num5(str[it[0]], base, flag) >= 0)
-			flag = 0;
+			flag = 1;
 		if (str[it[0]] == '-')
+		{
+			flag = 0;
 			multi *= -1;
+		}
 		if (check_num5(str[it[0]], base, flag) >= 0)
 			digits[it[1]++] = check_num5(str[it[0]], base, flag);
 		it[0]++;

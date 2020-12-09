@@ -10,17 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	check_num3(char c)
+int	check_num3(char c, int *flag)
 {
 	if (c >= '0' && c <= '9')
 		return (2);
-	if (c == '+' || c == '-')
+	if ((c == '+' || c == '-') && *flag)
+	{
+		*flag = 1;
 		return (1);
-	if (c == ' ' || c == '\n')
+	}
+	if ((c == ' ' || c == '\n') && *flag == 2)
 		return (1);
-	if (c == '\t' || c == '\v')
+	if ((c == '\t' || c == '\v') && *flag == 2)
 		return (1);
-	if (c == '\f' || c == '\r')
+	if ((c == '\f' || c == '\r') && *flag == 2)
 		return (1);
 	return (0);
 }
@@ -51,17 +54,19 @@ int	ft_atoi(char *str)
 	unsigned int	it2;
 	int				multi;
 	int				digits[256];
+	int				flag;
 
+	flag = 2;
 	it = 0;
 	it2 = 0;
 	multi = 1;
-	while (str[it] != '\0' && check_num3(str[it]))
+	while (str[it] != '\0' && check_num3(str[it], &flag))
 	{
 		if (str[it] == '-')
 		{
 			multi *= -1;
 		}
-		if (check_num3(str[it]) == 2)
+		if (check_num3(str[it], &flag) == 2)
 		{
 			digits[it2] = str[it] - '0';
 			it2++;
