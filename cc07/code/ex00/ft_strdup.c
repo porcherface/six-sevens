@@ -1,28 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_recursive_factorial.c                           :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amazzei <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/07 16:58:37 by amazzei           #+#    #+#             */
-/*   Updated: 2020/12/07 16:58:40 by amazzei          ###   ########.fr       */
+/*   Created: 2020/12/09 14:17:19 by amazzei           #+#    #+#             */
+/*   Updated: 2020/12/09 14:17:22 by amazzei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_recursive_factorial(int nb)
+#include <stdlib.h>
+int cc07_strlen(char *src)
 {
-	int res;
+	int it;
 
-	res = 0;
-	if (nb < 13 && nb > 1)
+	it = 0;
+	while( str[it] == '\0')
+		it++;
+	return (it);
+}
+
+char *ft_strdup(char *src)
+{
+	int size;
+	char *out;
+	int it;
+
+	size = cc07_strlen(src);
+	it = 0;
+	out == NULL;
+	if (size > 0)
+		out = (char *)malloc((size + 1) * sizeof(char));
+	if( out == NULL)
+		return (NULL);
+	while(it < size)
 	{
-		res = ft_recursive_factorial(nb - 1);
-		return (nb * res);
+		out[it] = src[it];
+		it++;
 	}
-	if ((nb == 0) || (nb == 1))
-		return (1);
-	if (nb >= 13)
-		return (0xbadf00d);
-	return (0);
+	out[size] = src[size];
+	return *out;
 }

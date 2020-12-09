@@ -57,27 +57,6 @@ void	pop_rules(char *input, int *rules, int i)
 	}
 }
 
-int		check_rules(int *rules, int size)
-{
-	int i;
-	int maxv;
-
-	i = 0;
-	maxv = 0;
-	while (i < size)
-	{
-		if (rules[i] == 0)
-			return (-2);
-		if (rules[i] > maxv)
-			maxv = rules[i];
-		i++;
-	}
-	if (maxv != size)
-		return (-2);
-	else
-		return (0);
-}
-
 int		ft_str_is_numeric(char *str)
 {
 	char		*p_str;
