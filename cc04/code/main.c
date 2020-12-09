@@ -115,7 +115,7 @@ int main()
 	{
 		ft_putstr("  [FAIL]\n");	
 	}
-	if (-1 == ft_atoi("--+-00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001"))
+	if (-1 == ft_atoi("      --+-00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001"))
 	{
 		ft_putstr("  [ OK ]\n");
 	}
@@ -123,7 +123,7 @@ int main()
 	{
 		ft_putstr("  [FAIL]\n");	
 	}
-	if (-2147483648 == ft_atoi("--+-2147483648"))
+	if (-2147483648 == ft_atoi(" --+-2147483648"))
 	{
 		ft_putstr("  [ OK ]\n");
 	}
@@ -131,7 +131,7 @@ int main()
 	{
 		ft_putstr("  [FAIL]\n");	
 	}
-	if (-2147483648 == ft_atoi("--+-       2147483648aaaaaa4446s"))
+	if (-0 == ft_atoi("--+-       2147483648aaaaaa4446s"))
 	{
 		ft_putstr("  [ OK ]\n");
 	}
@@ -139,7 +139,7 @@ int main()
 	{
 		ft_putstr("  [FAIL]\n");	
 	}
-	if (-2147483648 == ft_atoi("--+-   \n\t 2147483648aaaaaa4446s"))
+	if (-0 == ft_atoi("--+-   \n\t 2147483648aaaaaa4446s"))
 	{
 		ft_putstr("  [ OK ]\n");
 	}
@@ -257,7 +257,7 @@ int main()
 		ft_putstr("  [FAIL]\n");	
 	}
 
-	if (-1 == ft_atoi_base("--+-       b2147483648aaaaaa4446s","abc"))
+	if (-1 == ft_atoi_base("       --+-b2147483648aaaaaa4446s","abc"))
 	{
 		ft_putstr("  [ OK ]\n");
 	}
@@ -297,7 +297,7 @@ int main()
 	{
 		ft_putstr("  [FAIL]\n");	
 	}
-	if (-2147483648 == ft_atoi_base("--+-       2147483648aaaaaa4446s","0123456789"))
+	if (-2147483648 == ft_atoi_base("      --+-2147483648aaaaaa4446s","0123456789"))
 	{
 		ft_putstr("  [ OK ]\n");
 	}
@@ -305,7 +305,7 @@ int main()
 	{
 		ft_putstr("  [FAIL]\n");	
 	}
-	if (-0xffff == ft_atoi_base("--+-       ffffgaaaaaa4446s","0143256789abcdef"))
+	if (-0xffff == ft_atoi_base("--+-++++++++ffffgaaaaaa4446s","0143256789abcdef"))
 	{
 		ft_putstr("  [ OK ]\n");
 	}
@@ -313,7 +313,7 @@ int main()
 	{
 		ft_putstr("  [FAIL]\n");	
 	}
-	if (-0xfff == ft_atoi_base("--+-    fff-fgaaaaaa4446s","0143256789abcdef"))
+	if (-0 == ft_atoi_base("--+-    fff-fgaaaaaa4446s","0143256789abcdef"))
 	{
 		ft_putstr("  [ OK ]\n");
 	}
@@ -321,7 +321,7 @@ int main()
 	{
 		ft_putstr("  [FAIL]\n");	
 	}
-	if (-2147483648 == ft_atoi_base("--+-       !???????????????????????????????aaaaa4446s","?!"))
+	if (-2147483648 == ft_atoi_base("       --+-!???????????????????????????????aaaaa4446s","?!"))
 	{
 		ft_putstr("  [ OK ]\n");
 	}
