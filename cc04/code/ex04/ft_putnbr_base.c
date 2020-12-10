@@ -55,13 +55,15 @@ void	ft_putnbr_base(int nb, char *base)
 	int	digits[64];
 	int	base_num;
 	int	it;
+	int c;
 
 	base_num = count_base(base);
 	if (base_num < 2)
 		return ;
 	if (nb == 0)
 	{
-		write(1, "0", 1);
+		c = base[0];
+		write(1, &c, 1);
 		return ;
 	}
 	write(1, "-", 1 * (nb < 0));

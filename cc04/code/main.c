@@ -297,7 +297,7 @@ int main()
 	{
 		ft_putstr("  [FAIL]\n");	
 	}
-	if (-2147483648 == ft_atoi_base("      --+-2147483648aaaaaa4446s","0123456789"))
+	if (-214748364 == ft_atoi_base("      --+-214748364aaaaaa4446s","0123456789"))
 	{
 		ft_putstr("  [ OK ]\n");
 	}
