@@ -16,7 +16,7 @@ int cc07_strlen(char *src)
 	int it;
 
 	it = 0;
-	while( str[it] == '\0')
+	while( src[it] != '\0')
 		it++;
 	return (it);
 }
@@ -29,7 +29,7 @@ char *ft_strdup(char *src)
 
 	size = cc07_strlen(src);
 	it = 0;
-	out == NULL;
+	out = NULL;
 	if (size > 0)
 		out = (char *)malloc((size + 1) * sizeof(char));
 	if( out == NULL)
@@ -40,5 +40,5 @@ char *ft_strdup(char *src)
 		it++;
 	}
 	out[size] = src[size];
-	return *out;
+	return (out);
 }
