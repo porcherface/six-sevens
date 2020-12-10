@@ -40,8 +40,7 @@ int	main(int argc, char **argv)
 	int token;
 	int *rules;
 	int *board;
-	int flag = 0;
-
+	int flag = -1;
 	token = -1;
 	rules = 0x0;
 	board = 0x0;
@@ -50,13 +49,11 @@ int	main(int argc, char **argv)
 		token = -2;
 	else
 		size = get_size(argv[1]);
-
 	if ((size >= 4) && (size % 4) == 0)
 	{
+		flag++;
 		board = (int*)malloc((size / 4) * (size / 4) * sizeof(int));
 		rules = (int*)malloc(size * sizeof(int));
-		flag = 1;
-
 		token = parse_input(size, argv[1], rules, board);
 		if (token > 0)
 			token = rush_engine(rules, size / 4, board);
@@ -64,8 +61,8 @@ int	main(int argc, char **argv)
 	token = print_output(token, board, size / 4);
 	if(flag)
 	{
-		free(board);
-		free(rules);
+	free(board);
+	free(rules);
 	}
 	return (token);
 }
