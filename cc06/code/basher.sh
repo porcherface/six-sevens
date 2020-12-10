@@ -10,4 +10,9 @@ gcc -Wall -Wextra -Werror ex03/* -o out3.out
 ./out2.out "abba" dabba "cabba"
 ./out3.out "abba" dabba "cabba"
 
+./out0.out 
+./out1.out 
+./out2.out 
+./out3.out 
+
 rm out*.out
