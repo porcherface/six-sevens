@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi_base.c                                     :+:      :+:    :+:   */
+/*   ft_convert_base_2.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amazzei <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 17:22:10 by amazzei           #+#    #+#             */
-/*   Updated: 2020/12/03 17:22:11 by amazzei          ###   ########.fr       */
+/*   Updated: 2020/12/11 13:21:53 by amazzei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	init_iterator_gne_gne(unsigned int *it)
 	it[1] = 0;
 }
 
-int		ft_atoi_base_yee(char *str, char *base, int *ErrorByte)
+int		ft_atoi_base_yee(char *str, char *base, int *errorbyte)
 {
 	unsigned int	it[2];
 	int				multi;
@@ -94,7 +94,10 @@ int		ft_atoi_base_yee(char *str, char *base, int *ErrorByte)
 
 	cba_flg[0] = count_base5(base);
 	if (cba_flg[0] < 2)
-		return (++ErrorByte);
+	{
+		*errorbyte = 1;
+		return (*errorbyte);
+	}
 	init_iterator_gne_gne(it);
 	multi = 1;
 	cba_flg[1] = 1;

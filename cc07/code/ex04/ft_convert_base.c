@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_convert_base.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amazzei <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/11 13:21:14 by amazzei           #+#    #+#             */
+/*   Updated: 2020/12/11 13:21:19 by amazzei          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 int		ft_atoi_base_yee(char *str, char *base);
 
@@ -35,7 +46,7 @@ char	*ft_itoa_base64(int nb, char *base, int *num_bytes)
 
 	base_num = count_base(base);
 	if (base_num < 2)
-		return NULL;
+		return 0x0;
 	if (nb == 0)
 	{
 		static_array_yeee[0] = base[0];
@@ -58,7 +69,6 @@ char	*ft_itoa_base64(int nb, char *base, int *num_bytes)
 
 char *ft_convert_base(char *nbr, char *base_from, char *base_to)
 {
-	/* in poche parole atoi base -> putnbr base ma in un array */
 	int number;
 	int num_bytes;
 	char static_array_yeee[64];
@@ -75,7 +85,7 @@ char *ft_convert_base(char *nbr, char *base_from, char *base_to)
 	static_array_yeee = ft_itoa_base64(number, base_to, &num_bytes);
 	if (num_bytes && static_array_yeee)
 	{
-		out = (char *)malloc(num_bytes *sizeof(char));
+		out = (char *)malloc(num_bytes * sizeof(char));
 		out[it] = static_array_yeee[it];
 		it++;
 	}
