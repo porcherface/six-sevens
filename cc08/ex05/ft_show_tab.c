@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_stock_str.h" 
+#include "ft_stock_str.h"
 #include <unistd.h>
 
 void	ft_putstr(char *str)
@@ -24,6 +24,7 @@ void	ft_putstr(char *str)
 		it++;
 	}
 }
+
 void	init_digits(char *digits)
 {
 	int it;
@@ -74,14 +75,13 @@ void	ft_putnbr(int nb)
 	return ;
 }
 
-void ft_show_tab(struct s_stock_str *par)
+void	ft_show_tab(struct s_stock_str *par)
 {
 	int size;
 	int itsize;
 
-	size = (sizeof(par) / sizeof(t_stock_str *));
 	itsize = 0;
-	while(itsize < size)
+	while (par[itsize].str)
 	{
 		ft_putstr(par[itsize].str);
 		ft_putstr("\n");
