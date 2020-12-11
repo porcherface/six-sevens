@@ -43,7 +43,16 @@ char	*ft_strjoin(int size, char **strs, char *sep);
 
 #include <string.h>
 #include <stdlib.h>
-
+int meh_assert(int a)
+{	if (a)
+	{
+		ft_putstr("  [ OK ]\n");
+	}
+	else
+	{
+		ft_putstr("  [FAIL]\n");	
+	}
+}
 int main()
 { /*
 	ft_putstr("using ft_putstr for stdout\n");
@@ -72,18 +81,18 @@ int main()
 	}
 
 */
-	char *sep = " dio,";
+	char *sep = " /,******************************************************************************************************************************";
 	char **strs = (char **)malloc(3*sizeof(char*));
-	char *b1 = "cane";
-	char *b2 = "wombat";
-	char *b3 = "e anche un po porco";
+	char *b1 = "cane*********************************************************************************************************";
+	char *b2 = "                                               wombat";
+	char *b3 = "  !!!!!\00 \1 \xbadcacca ";
 
 
 
 	strs[0] = b1;
 	strs[1] = b2;
 	strs[2] = b3;
-
+	/* what could possibly go wrong*/
 	ft_putstr(ft_strjoin(3, strs, sep));
 
 
