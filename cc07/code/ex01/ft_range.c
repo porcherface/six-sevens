@@ -22,7 +22,7 @@ int	*ft_range(int min, int max)
 	size = max - min;
 	if(size)
 	{
-		out = (int *)malloc*(size * sizeof(int));
+		out = (int *)malloc(size * sizeof(int));
 		it = 0;
 		while(it < size)
 		{
@@ -31,6 +31,7 @@ int	*ft_range(int min, int max)
 		}
 	}
 	if (!out)
+		//free out ?? 
 		return (NULL);
 	return (out);
 }

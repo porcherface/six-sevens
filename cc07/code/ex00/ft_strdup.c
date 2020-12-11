@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include <stdlib.h>
+
 int cc07_strlen(char *src)
 {
 	int it;
@@ -33,6 +34,7 @@ char *ft_strdup(char *src)
 	if (size > 0)
 		out = (char *)malloc((size + 1) * sizeof(char));
 	if( out == NULL)
+		//free(out);
 		return (NULL);
 	while(it < size)
 	{

@@ -40,6 +40,7 @@ void	ft_putstr(char *str)
 
 char *ft_strdup(char *src);
 char	*ft_strjoin(int size, char **strs, char *sep);
+char *ft_convert_base(char *nbr, char *base_from, char *base_to);
 
 #include <string.h>
 #include <stdlib.h>
@@ -54,7 +55,7 @@ int meh_assert(int a)
 	}
 }
 int main()
-{ /*
+{ 
 	ft_putstr("using ft_putstr for stdout\n");
 
 	char *in  = "ajejebrazorf\0";
@@ -80,12 +81,12 @@ int main()
 		ft_putstr("  [FAIL]\n");	
 	}
 
-*/
-	char *sep = " /,******************************************************************************************************************************";
+
+	char *sep = " /,**";
 	char **strs = (char **)malloc(3*sizeof(char*));
-	char *b1 = "cane*********************************************************************************************************";
-	char *b2 = "                                               wombat";
-	char *b3 = "  !!!!!\00 \1 \xbadcacca ";
+	char *b1 = "cane*a";
+	char *b2 = "                                            \n\n   wombat";
+	char *b3 = "b";
 
 
 
@@ -94,10 +95,47 @@ int main()
 	strs[2] = b3;
 	/* what could possibly go wrong*/
 	ft_putstr(ft_strjoin(3, strs, sep));
+	if(!strcmp(ft_convert_base("3=======D", "3=D","(Y)"), "(YYYYYYY)"))
+	{
+		ft_putstr("  [ OK ]\n");
+	}
+	else
+	{
+		ft_putstr("  [FAIL]\n");	
+	}
+	if(!ft_convert_base("3========D", "3==D",":)"))
+	{
+		ft_putstr("  [ OK ]\n");
+	}
+	else
+	{
+		ft_putstr("  [FAIL]\n");	
+	}
 
+	if(!ft_convert_base("3========D", "3=D",":-)"))
+	{
+		ft_putstr("  [ OK ]\n");
+	}
+	else
+	{
+		ft_putstr("  [FAIL]\n");	
+	}
 
-
-
-
+	if(!ft_convert_base("3========D", "23","\""))
+	{
+		ft_putstr("  [ OK ]\n");
+	}
+	else
+	{
+		ft_putstr("  [FAIL]\n");	
+	}
+	if(!strcmp(ft_convert_base("      --------!=", "!=","?^"), "-?^"))
+	{
+		ft_putstr("  [ OK ]\n");
+	}
+	else
+	{
+		ft_putstr("  [FAIL]\n");	
+	}
 	return (0);
 }
