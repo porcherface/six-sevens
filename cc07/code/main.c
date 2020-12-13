@@ -44,6 +44,7 @@ char *ft_convert_base(char *nbr, char *base_from, char *base_to);
 
 #include <string.h>
 #include <stdlib.h>
+/*
 int meh_assert(int a)
 {	if (a)
 	{
@@ -53,9 +54,10 @@ int meh_assert(int a)
 	{
 		ft_putstr("  [FAIL]\n");	
 	}
-}
+}*/
 int main()
 { 
+	/*
 	ft_putstr("using ft_putstr for stdout\n");
 
 	char *in  = "ajejebrazorf\0";
@@ -81,7 +83,7 @@ int main()
 		ft_putstr("  [FAIL]\n");	
 	}
 
-
+*/
 	char *sep = " /,**";
 	char **strs = (char **)malloc(3*sizeof(char*));
 	char *b1 = "cane*a";
@@ -95,6 +97,7 @@ int main()
 	strs[2] = b3;
 	/* what could possibly go wrong*/
 	ft_putstr(ft_strjoin(3, strs, sep));
+	
 	if(!strcmp(ft_convert_base("3=======D", "3=D","(Y)"), "(YYYYYYY)"))
 	{
 		ft_putstr("  [ OK ]\n");
@@ -103,6 +106,7 @@ int main()
 	{
 		ft_putstr("  [FAIL]\n");	
 	}
+	/*
 	if(!ft_convert_base("3========D", "3==D",":)"))
 	{
 		ft_putstr("  [ OK ]\n");
@@ -137,5 +141,6 @@ int main()
 	{
 		ft_putstr("  [FAIL]\n");	
 	}
+	return (0);*/
 	return (0);
 }

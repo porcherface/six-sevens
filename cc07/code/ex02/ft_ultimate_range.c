@@ -6,7 +6,7 @@
 /*   By: amazzei <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/09 14:17:19 by amazzei           #+#    #+#             */
-/*   Updated: 2020/12/09 14:17:22 by amazzei          ###   ########.fr       */
+/*   Updated: 2020/12/11 13:20:59 by amazzei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,22 @@ int	ft_ultimate_range(int **range, int min, int max)
 	int it;
 
 	if (min >= max)
-		return (-1);
+	{
+		range = NULL;
+		return (0);
+	}
 	size = max - min;
-	if(size)
+	if (size)
 	{
 		*range = (int *)malloc(size * sizeof(int));
 		it = 0;
-		while(it < size)
+		while (it < size)
 		{
-			out[it] = min + it;
+			range[it] = min + it;
 			it++;
-		}	
+		}
 	}
-	if (!out)
-		//free out ?? 
+	if (!range)
 		return (-1);
 	return (size);
 }
