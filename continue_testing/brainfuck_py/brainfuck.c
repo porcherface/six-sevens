@@ -98,7 +98,8 @@ int main(int argc, char **argv)
 {
 	if (argc < 2)
 	{
-		write(1, "Error: no code submitted\n", 18);
+		write(1, "Error: no code submitted\n", 26);
+		return 1;
 	}
 	fuck_brain(argv[1]);
 
