@@ -35,19 +35,18 @@ class analyze:
                 _map[cell].center[0] += ix
                 _map[cell].center[1] += iy
 
-        self.objects = []
         for key in _map.keys():
             _map[key].center[0] /= _map[key].cells
             _map[key].center[1] /= _map[key].cells
-            self.objects.append(_map[key])
+        self.objects = _map
 
-        self.num = len(self.objects)
+        self.num = len(self.objects) - 1 #remove island '0' (sea)
         self.big = 0
 
-    def set_big(self, big_val)
+    def set_big(self, big_val):
         for key in self.objects.keys():
-            if self.objects[key].cells >= big_val:
-                _map[key].is_big = True
+            if self.objects[key].cells >= big_val and self.objects[key].label != 0:
+                self.objects[key].is_big = True
                 self.big += 1
         
     def show(self, specific = False):

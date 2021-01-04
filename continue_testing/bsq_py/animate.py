@@ -6,6 +6,9 @@ from pygame.transform import rotate as rotate
 from pygame.transform import scale as scale
 from pygame.surfarray import make_surface as makesurf
 from gather import gather as gather
+from translator.file2container import file2container
+
+LOAD_DATA = False
 
 # this is just a main file (for now)
 # no class is exposed (for now)
@@ -44,14 +47,20 @@ if __name__ == "__main__":
 
     # load data
     max_level = 10
-    container = gather("dataset/vader.png", max_level)
+    
+    if LOAD_DATA:
+        container = file2container("dataset/vader_container.bsqc")
+    else:
+        container = gather("dataset/vader.png", max_level)
+    
+
     surfaces = []
     analysis = []
     for i in range(max_level):
         surfaces.append(  scale(rotate(makesurf(container.isles[i].get_islands()), -90),(size_x,size_y))  )
         analysis.append(container.analysis[i])
         analysis[i].set_big(50)
-        
+
     # this level
     this_level = 0
     last_level = -1

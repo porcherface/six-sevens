@@ -59,9 +59,8 @@ def _show_data(data, usechar):
 
 if __name__ == "__main__":
     
-    columns, rows = os.get_terminal_size(0)
     
-
+    columns, rows = os.get_terminal_size(0)
     data = np.zeros( (rows, columns))
     subdata = np.array([ "                                                 ",
                          "                                                 ",
@@ -80,11 +79,6 @@ if __name__ == "__main__":
                          "             11                                  ",
                          "                                                 ",] )
 
-    if rows < len(subdata):
-        print("screen is too small to play, ass")
-    if columns < len(subdata[0]):
-        print("screen is too small to play, ass")
-
     #function for copying submatrices in data                  
     for ix, row in enumerate(subdata):
         for iy, char in enumerate(row):
@@ -94,10 +88,17 @@ if __name__ == "__main__":
             data[ix][iy] = int(char)
 
 
-    # game of life temporal evolution
+    # ugly time evolution simulation
     _show_data(data, '+')
     time.sleep(TIME)
     while 1:
+
+        columns, rows = os.get_terminal_size(0)
+        while rows < len(subdata):
+            print("screen is too small to play, ass")
+        while columns < len(subdata[0]):
+            print("screen is too small to play, ass")
+
         data = life(data, rows, columns)
         _show_data (data ,'+')
         time.sleep(TIME)
