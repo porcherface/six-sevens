@@ -30,7 +30,7 @@ def _process_data(data, parameter):
 
 def parprocess(data, parameter, num_cores):
     return Parallel(n_jobs=num_cores)(delayed(_process_data)(data, i) for i in parameter)
-
+    #return (_process_data(data, i) for i in parameter)
 
 if __name__ == "__main__":
 
