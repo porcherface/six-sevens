@@ -8,6 +8,7 @@ class _parameters:
         self.label = label 
         self.cells = 0
         self.center = [0, 0]
+        self.is_big = False
 
     def _show(self):
         print("general ", self.label)
@@ -17,7 +18,7 @@ class _parameters:
 
 # analysis module for islands
 class analyze:
-    def __init__(self, islands):
+    def __init__(self, islands, big = None):
 
         self.copy = np.copy(islands)
 
@@ -40,6 +41,15 @@ class analyze:
             _map[key].center[1] /= _map[key].cells
             self.objects.append(_map[key])
 
+        self.num = len(self.objects)
+        self.big = 0
+
+    def set_big(self, big_val)
+        for key in self.objects.keys():
+            if self.objects[key].cells >= big_val:
+                _map[key].is_big = True
+                self.big += 1
+        
     def show(self, specific = False):
         print("Hello there: ")
         print("- map contains {} islands".format(len(self.objects)))
@@ -48,7 +58,7 @@ class analyze:
                 item._show()
 
     def __str__(self):
-        return "- map contains {} islands".format(len(self.objects))
+        return "- map contains {} islands, {} big islands".format(self.num,self.big) 
 
 if __name__ == "__main__":
     from islands import islands
@@ -58,7 +68,8 @@ if __name__ == "__main__":
     isles.set_sea(6)
     isles.find_islands()
     isles.show_islands()
-    analyze(isles.get_islands()).show("yes yes")
+    a = analyze(isles.get_islands())
+    a.show("yes yes")
 
 
 

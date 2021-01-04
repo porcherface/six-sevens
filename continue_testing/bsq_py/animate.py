@@ -50,7 +50,8 @@ if __name__ == "__main__":
     for i in range(max_level):
         surfaces.append(  scale(rotate(makesurf(container.isles[i].get_islands()), -90),(size_x,size_y))  )
         analysis.append(container.analysis[i])
-
+        analysis[i].set_big(50)
+        
     # this level
     this_level = 0
     last_level = -1
