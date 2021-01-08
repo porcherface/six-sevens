@@ -4,7 +4,6 @@
 from translator.im2mat import im2mat 
 from islands import islands
 from parprocess import parprocess
-import json
 import matplotlib.pyplot as plt
 
 class gather():
@@ -31,7 +30,10 @@ class gather():
             self.isles   .append( item[0] )
             self.analysis.append( item[1] )
 
-
+    def get_imgsize(self):
+        x = len(self.image)
+        y = len(self.image[0])
+        return (y,x) #whoops
 
     def show_image(self):
         imgplot = plt.imshow(self.image)
@@ -40,17 +42,9 @@ class gather():
     def show_island(self, level = None):
         imgplot = plt.imshow(self.isles[level].isles)
         plt.show()
-    
-    def toJSON(self):
-        return json.dumps(self, default=lambda o: o.__dict__, 
-            sort_keys=True, indent=4)
 
 if __name__ == "__main__":
-    from translator.container2file import container2file
     container = gather("dataset/vader.png", 10)
     #container.show_image()
-    container.show_island(5)
-    container2file(container, "dataset/vader_container.bsqc")
-
-
-
+    #container.show_island(5)
+    print(container.get_imgsize())

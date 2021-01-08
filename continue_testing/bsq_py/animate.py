@@ -3,16 +3,13 @@
 '''
 import pygame
 from pygame.transform import rotate as rotate
-from pygame.transform import scale as scale
+from pygame.transform import flip as flip
 from pygame.surfarray import make_surface as makesurf
 from gather import gather as gather
-from translator.file2container import file2container
 
-LOAD_DATA = False
+#pygame animation to show results
 
-# this is just a main file (for now)
-# no class is exposed (for now)
-
+SQUARE_COLOR = [40,240,30]
 def _estimate_ta(data_size, slices):
     num_cores = multiprocessing.cpu_count()
     print("detected {} cores".format(num_cores))
@@ -23,43 +20,39 @@ def _estimate_ta(data_size, slices):
     print("estimated time awaiting is ", str( ref_resized * data_size * slices / num_cores )  )
     return num_cores
 
-def _draw_hud(screen, level, max, info):
-        font = pygame.font.SysFont(None, 32)
+def _draw_hud(screen, level, max_level, info):
+        font = pygame.font.SysFont(None, 20)
         data_string = "slice "+str(level+1)+" of "+str(max_level)+". "
         data_string += str(info)
         text_surf = font.render(data_string, 1, (255,255,255))
         text_rect = text_surf.get_rect()
         screen.blit(text_surf, text_rect)
 
-def _dump():
-    pass
-
-def _retrieve():
-    pass
-
-if __name__ == "__main__":
-    
-    #pygame shit to make it work    
-    pygame.init()
-    size_x = 800
-    size_y = 800
-    screen  = pygame.display.set_mode([size_x, size_y])
-
+#function returns a list of snapshots!
+def animate():
     # load data
     max_level = 10
+    container = gather("dataset/vader.png", max_level)
+    #we try a tuple
+    (size_x, size_y) = container.get_imgsize()
+
+    #pygame shit to make it work    
+    pygame.init()
+    clock = pygame.time.Clock()
+
+    #size_x = 800
+    #size_y = 800
+    screen  = pygame.display.set_mode([size_x, size_y])
     
-    if LOAD_DATA:
-        container = file2container("dataset/vader_container.bsqc")
-    else:
-        container = gather("dataset/vader.png", max_level)
-    
+    snaps = []
 
     surfaces = []
     analysis = []
+
     for i in range(max_level):
-        surfaces.append(  scale(rotate(makesurf(container.isles[i].get_islands()), -90),(size_x,size_y))  )
+        surfaces.append(flip(rotate(makesurf(container.isles[i].get_islands()), -90), 1, 0))
         analysis.append(container.analysis[i])
-        analysis[i].set_big(50)
+        print(analysis[i].bsq)
 
     # this level
     this_level = 0
@@ -67,6 +60,8 @@ if __name__ == "__main__":
 
     #main loop
     main = True
+    fake_time = 0
+    
     while main:
         # get key press
         events = pygame.event.get()
@@ -86,13 +81,70 @@ if __name__ == "__main__":
                     main = False
 
         #render accordingly
-        if last_level != this_level:
-            surf = surfaces[this_level]
-            last_level = this_level
-            screen.blit(surf, surf.get_rect())
-            _draw_hud(screen,this_level, max_level, analysis[this_level])
+        #if last_level != this_level:
+        surf = surfaces[this_level]
+        #    last_level = this_level
+
+        screen.blit(surf, surf.get_rect())
+
+        # bsq blinking square
+        rect_sizes = analysis[this_level].bsq
+        left   = rect_sizes[1]
+        top    = rect_sizes[2]
+        width  = rect_sizes[0]
+        height = rect_sizes[0]
+
+        #prepare blinking surface
+        blinking_square = pygame.Surface((width,height))
+        square_color = SQUARE_COLOR
+        blinking_square.fill(square_color)
+
+        #now i have to scale width and height?
+
+
+        bsq_rect = pygame.Rect(left, top, width, height)
+        if int(fake_time / 10) % 2 == 0:
+            screen.blit(blinking_square, bsq_rect)
+
+        _draw_hud(screen,this_level, max_level, analysis[this_level])
         #blit blot
         pygame.display.update()
+        snaps.append(screen.copy())
+        fake_time += 1
+        clock.tick(30)
+    
+    return snaps
+
+# pygame snaps to image
+def _dump(snaps):
+    for idx, snap in enumerate(snaps):
+        print("saving frame ",idx)
+        pygame.image.save_extended(snap, "output/snaps/snap"+'{:03d}'.format(idx)+".png")
+
+def _make_movie():
+    import glob 
+    import cv2
+    
+    img_array = []
+    for filename in sorted(glob.glob('output/snaps/snap*.png')):
+        print("reading ", filename)
+        img = cv2.imread(filename)
+        height, width, layers = img.shape
+        size = (width,height)
+        img_array.append(img)
+     
+    print("size is: ", size)
+
+    #fourcc = cv2.cv.CV_FOURCC(*'mp4v') 
+    out = cv2.VideoWriter('output/movie.mp4',cv2.VideoWriter_fourcc(*'mp4v'), 30, size)
+ 
+    for i in range(len(img_array)):
+        out.write(img_array[i])
+    out.release()
 
 
-
+if __name__ == "__main__":
+    # phase 1: _dump(animate())
+    #snaps = animate()
+    #_dump(snaps)
+    _make_movie()

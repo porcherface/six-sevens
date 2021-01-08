@@ -2,13 +2,13 @@
 | - analyze.py
 '''
 import numpy as np
+from bsq import bsq as bsq
 
 class _parameters:
     def __init__(self, label):
         self.label = label 
         self.cells = 0
         self.center = [0, 0]
-        self.is_big = False
 
     def _show(self):
         print("general ", self.label)
@@ -18,7 +18,7 @@ class _parameters:
 
 # analysis module for islands
 class analyze:
-    def __init__(self, islands, big = None):
+    def __init__(self, islands):
 
         self.copy = np.copy(islands)
 
@@ -35,29 +35,24 @@ class analyze:
                 _map[cell].center[0] += ix
                 _map[cell].center[1] += iy
 
+        self.objects = []
         for key in _map.keys():
             _map[key].center[0] /= _map[key].cells
             _map[key].center[1] /= _map[key].cells
-        self.objects = _map
+            self.objects.append(_map[key])
+        self.bsq = bsq(islands)
 
-        self.num = len(self.objects) - 1 #remove island '0' (sea)
-        self.big = 0
 
-    def set_big(self, big_val):
-        for key in self.objects.keys():
-            if self.objects[key].cells >= big_val and self.objects[key].label != 0:
-                self.objects[key].is_big = True
-                self.big += 1
-        
     def show(self, specific = False):
         print("Hello there: ")
         print("- map contains {} islands".format(len(self.objects)))
         if specific:
             for item in self.objects:
                 item._show()
+        print("bsq is "+str(self.bsq))
 
     def __str__(self):
-        return "- map contains {} islands, {} big islands".format(self.num,self.big) 
+        return "- map contains {} islands, bsq @".format(len(self.objects))+str(self.bsq)
 
 if __name__ == "__main__":
     from islands import islands
@@ -67,9 +62,9 @@ if __name__ == "__main__":
     isles.set_sea(6)
     isles.find_islands()
     isles.show_islands()
-    a = analyze(isles.get_islands())
-    a.show("yes yes")
-
+    analysis = analyze(isles.get_islands())
+    analysis.show("yes yes")
+    print(str(analysis))
 
 
 
