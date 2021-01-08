@@ -39,13 +39,9 @@ def animate():
     #pygame shit to make it work    
     pygame.init()
     clock = pygame.time.Clock()
-
-    #size_x = 800
-    #size_y = 800
     screen  = pygame.display.set_mode([size_x, size_y])
     
     snaps = []
-
     surfaces = []
     analysis = []
 
@@ -81,10 +77,7 @@ def animate():
                     main = False
 
         #render accordingly
-        #if last_level != this_level:
         surf = surfaces[this_level]
-        #    last_level = this_level
-
         screen.blit(surf, surf.get_rect())
 
         # bsq blinking square
@@ -100,8 +93,6 @@ def animate():
         blinking_square.fill(square_color)
 
         #now i have to scale width and height?
-
-
         bsq_rect = pygame.Rect(left, top, width, height)
         if int(fake_time / 10) % 2 == 0:
             screen.blit(blinking_square, bsq_rect)
@@ -142,9 +133,12 @@ def _make_movie():
         out.write(img_array[i])
     out.release()
 
-
 if __name__ == "__main__":
+    # a whole video routine
     # phase 1: _dump(animate())
     #snaps = animate()
     #_dump(snaps)
-    _make_movie()
+    #_make_movie()
+
+    #or just watch...
+    animate()
