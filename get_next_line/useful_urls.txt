@@ -1,0 +1,1 @@
+https://github.com/mikim42/get_next_line/blob/master/get_next_line.c
